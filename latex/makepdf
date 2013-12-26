@@ -1,0 +1,196 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# please use ruby1.8.*, there is problem for utf-8 in ruby 1.9 
+require 'fileutils'
+require 'erb'
+require 'yaml'
+
+include FileUtils
+
+$here = File.expand_path(File.dirname(__FILE__))
+$root = File.join($here, '..')
+$outDir = File.join($root, 'pdf')
+
+def figures(&block)
+	begin
+		Dir["#$root/figures/18333*.png"].each do |file|
+			cp(file, file.sub(/18333fig0(\d)0?(\d+)\-tn/, '\1.\2'))
+		end
+		block.call
+	ensure
+		Dir["#$root/figures/18333*.png"].each do |file|
+			rm(file.gsub(/18333fig0(\d)0?(\d+)\-tn/, '\1.\2'))
+		end
+	end
+end
+
+def usage
+	puts <<USAGE
+Usage:
+  makepdf [OPTION...] LANGUAGE [LANGUAGE 2...]
+
+Options:
+  -d, --debug      prints TeX and other output
+USAGE
+	exit
+end
+
+def command_exists?(command)
+	if File.executable?(command) then
+		return command
+	end
+	ENV['PATH'].split(File::PATH_SEPARATOR).map do |path|
+		cmd = "#{path}/#{command}"
+		File.executable?(cmd) || File.executable?("#{cmd}.exe") || File.executable?("#{cmd}.cmd")
+	end.inject{|a, b| a || b}
+end
+
+def replace(string, &block)
+	string.instance_eval do
+		alias :s :gsub!
+		instance_eval(&block)
+	end
+	string
+end
+
+def verbatim_sanitize(string)
+	string.gsub('\\', '{\textbackslash}').
+		gsub('~', '{\textasciitilde}').
+		gsub(/([\$\#\_\^\%])/, '\\\\' + '\1{}')
+end
+
+def pre_pandoc(string, config)
+	replace(string) do
+                s /\#\#\#\#\# (.*?) \#\#\#\#\#/, 'PARASECTION: \1'
+		# Pandoc discards #### subsubsections #### - this hack recovers them
+		s /\#\#\#\# (.*?) \#\#\#\#/, 'SUBSUBSECTION: \1'
+		
+		# Turns URLs into clickable links
+		s /\`(http:\/\/[A-Za-z0-9\/\%\&\=\-\_\\\.]+)\`/, '<\1>'
+		s /(\n\n)\t(http:\/\/[A-Za-z0-9\/\%\&\=\-\_\\\.]+)\n([^\t]|\t\n)/, '\1<\2>\1'
+
+		# Process figures
+		s /Insert\s18333fig\d+\.png\s*\n.*?\d{1,2}-\d{1,2}\. (.*)/, 'FIG: \1'
+	end
+end
+
+def post_pandoc(string, config)
+	replace(string) do
+		space = /\s/
+
+		# Reformat for the book documentclass as opposed to article
+		s '\section', '\chap'
+		s '\sub', '\\'
+		s /SUBSUBSECTION: (.*)/, '\subsubsection{\1}'
+                s /PARASECTION: (.*)/, '\paragraph{\1}'
+
+		# Enable proper cross-reference
+		s /#{config['fig'].gsub(space, '\s')}\s*(\d+)\-\-(\d+)/, '\imgref{\1.\2}'
+		s /#{config['tab'].gsub(space, '\s')}\s*(\d+)\-\-(\d+)/, '\tabref{\1.\2}'
+		s /#{config['prechap'].gsub(space, '\s')}\s*(\d+)(\s*)#{config['postchap'].gsub(space, '\s')}/, '\chapref{\1}\2'
+
+		# Miscellaneous fixes
+		s /FIG: (.*)/, '\img{\1}'
+		s '\begin{enumerate}[1.]', '\begin{enumerate}'
+		s /(\w)--(\w)/, '\1-\2'
+		s /``(.*?)''/, "#{config['dql']}\\1#{config['dqr']}"
+
+		# Typeset the maths in the book with TeX
+		s '\verb!p = (n(n-1)/2) * (1/2^160))!', '$p = \frac{n(n-1)}{2} \times \frac{1}{2^{160}}$)'
+		s '2\^{}80', '$2^{80}$'
+		s /\sx\s10\\\^\{\}(\d+)/, '\e{\1}'
+
+		# Convert inline-verbatims into \texttt (which is able to wrap)
+		s /\\verb(\W)(.*?)\1/ do
+			"{\\texttt{#{verbatim_sanitize($2)}}}"
+		end
+
+		# Ensure monospaced stuff is in a smaller font
+		s /(\\verb(\W).*?\2)/, '{\footnotesize\1}'
+		s /(\\begin\{verbatim\}.*?\\end\{verbatim\})/m, '{\footnotesize\1}'
+
+		# Shaded verbatim block
+		s /(\\begin\{verbatim\}.*?\\end\{verbatim\})/m, '\begin{shaded}\1\end{shaded}'
+		
+		# http://www.devdaily.com/blog/post/latex/control-line-spacing-in-itemize-enumerate-tags
+		# http://wiki.ctex.org/index.php/LaTeX/%E5%88%97%E8%A1%A8
+		# set the space of itemsize
+		s /(\\begin\{itemize\})/m,'\begin{itemize}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}'
+		s /(\\begin\{enumerate\})/m,'\begin{enumerate}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}'
+		# hardcode for itemize to use * instead of dot, which is missed in some chinese fonts
+		s /(^\\item)/m,'\item[*]'
+		
+	end
+end
+
+ARGV.delete_if{|arg| $DEBUG = true if arg == '-d' or arg == '--debug'}
+languages = ARGV.select{|arg| File.directory?("#$root/#{arg}")}
+usage if languages.empty?
+
+$config = YAML.load_file("#$here/config.yml")
+template = ERB.new(File.read("#$here/template.tex"))
+
+missing = ['pandoc', 'xelatex'].reject{|command| command_exists?(command)}
+unless missing.empty?
+	puts "Missing dependencies: #{missing.join(', ')}."
+	puts "Install these and try again."
+	exit
+end
+
+figures do
+	languages.each do |lang|
+		config = $config['default'].merge($config[lang]) rescue $config['default']
+
+		puts "#{lang}:"
+		markdown = Dir["#$root/#{lang}/*/*.markdown"].sort.map do |file|
+			File.read(file)
+		end.join("\n\n")
+
+		print "\tParsing markdown... "
+		latex = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
+			pipe.write(pre_pandoc(markdown, config))
+			pipe.close_write
+			post_pandoc(pipe.read, config)
+		end
+		puts "done"
+
+		print "\tCreating main.tex for #{lang}... "
+		dir = "#$here/#{lang}"
+		mkdir_p(dir)
+
+		File.open("#{dir}/main.tex", 'w') do |file|
+			file.write(template.result(binding))
+		end
+		puts "done"
+
+		abort = false
+
+		puts "\tRunning XeTeX:"
+		cd($root)
+		3.times do |i|
+			print "\t\tPass #{i + 1}... "
+			IO.popen("xelatex -output-directory=\"#{dir}\" \"#{dir}/main.tex\" 2>&1") do |pipe|
+				unless $DEBUG
+					if ~ /^!\s/
+						puts "failed with:\n\t\t\t#{$_.strip}"
+						puts "\tConsider running this again with --debug."
+						abort = true
+					end while pipe.gets and not abort
+				else
+					STDERR.print while pipe.gets rescue abort = true
+				end
+			end
+			break if abort
+			puts "done"
+		end
+
+		unless abort
+			print "\tMoving output to kaiyuanbook.#{lang}.pdf... "
+                        mv("#{dir}/main.pdf", "#$root/kaiyuanbook.#{lang}.pdf")
+			puts "done"
+        else
+            print "\tConvent error, exit !"
+            exit 1
+		end
+	end
+end

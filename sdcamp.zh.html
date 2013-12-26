@@ -1,0 +1,623 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Software Development - Boot Camp</title></head><body><h1>附录</h1>
+
+<h2>Shell编程学习笔记</h2>
+
+<h3>前言</h3>
+
+<p>这里只是个人学习笔记哦，主要包括Shell概述、Shell变量、位置参数、特殊符号、别名、各种控制语句、函数等Shell编程知识。</p>
+
+<p>要是想系统的学shell，应该找一些比较系统的资料，例如：<a href="http://www.tinylab.org/shell-programming-paradigm-series-index-review/">《Shell编程范例序列》</a>和<a href="http://www.chinaunix.net/jh/24/628472.html">《鸟哥学习Shell Scripts》</a>。</p>
+
+<h3>执行Shell脚本的方式</h3>
+
+<h4>范例：输入重定向到bash</h4>
+
+<p><code>
+$ bash &lt; ex1
+</code></p>
+
+<p>可以读入ex1中的程序，并执行</p>
+
+<h4>范例：以脚本名作为参数</h4>
+
+<p>其一般形式是：</p>
+
+<p><code>
+$ bash 脚本名 ［参数]
+</code></p>
+
+<p>例如：</p>
+
+<p><code>
+$ bash ex2 /usr/meng /usr/zhang
+</code></p>
+
+<p>其执行过程与上一种方式一样，但这种方式的好处是能在脚本名后面带有参数，从而将参数值传递给程序中的命令，使一个Shell脚本可以处理多种情况，就如同函数调用时可根据具体问题给定相应的实参。</p>
+
+<h4>范例：以 . 来执行</h4>
+
+<p>如果以目前Shell（以·表示）执行一个Shell脚本，则可以使用如下简便形式：</p>
+
+<p><code>
+$ · ex3［参数］
+</code></p>
+
+<p>以Shell脚本作为Shell的命令行参数，这种方式可用来进行程序调试。</p>
+
+<p>将Shell脚本的权限设置为可执行，然后在提示符下直接执行它。</p>
+
+<p>具体办法：</p>
+
+<p><code>
+$ chmod a+x ex4
+$ ./ex4
+</code></p>
+
+<h3>Shell的执行原理</h3>
+
+<p>Shell 接收用户输入的命令（脚本名），并进行分析。如果文件被标记为可执行的，但不是被编译过的程序，Shell就认为它是一个Shell脚本。Shell将读 取其中的内容，并加以解释执行。所以,从用户的观点看，执行Shell脚本的方式与执行一般的可执行文件的方式相似。</p>
+
+<p>因此，用户开发的Shell脚本可以驻留在命令搜索路径的目录之下（通常是“/bin”、 “/usr/bin”等），像普通命令一样使用。这样，也就开发出自己的新命令。如果打算反复使用编好的Shell脚本，那么采用这种方式就比较方便。</p>
+
+<h3>变量赋值</h3>
+
+<p>可以将一个命令的执行结果赋值给变量。有两种形式的命令替换：一种是使用倒引号引用命令，其一般形式是： <code>命令表</code>。</p>
+
+<p>例如：将当前工作目录的全路径名存放到变量dir中，输入以下命令行：</p>
+
+<p><code>
+$ dir=`pwd`
+</code></p>
+
+<p>另一种形式是：$(命令表)。上面的命令行也可以改写为：</p>
+
+<p><code>
+$ dir=$(pwd)
+</code></p>
+
+<h3>数组</h3>
+
+<p>bash只提供一维数组，并且没有限定数组的大小。类似与C语言，数组元素的下标由0开始编号。获取数组中的元素要利用下标。下标可以是整数或算术表达式，其值应大于或等于0。用户可以使用赋值语句对数组变量赋值。</p>
+
+<h4>范例：对数组元素赋值</h4>
+
+<p>对数组元素赋值的一般形式是：数组名[下标]＝值，例如：</p>
+
+<p><code>
+$ city[0]=Beijing
+$ city[1]=Shanghai
+$ city[2]=Tianjin
+</code></p>
+
+<p>也可以用declare命令显式声明一个数组，一般形式是：</p>
+
+<p><code>
+$ declare -a 数组名
+</code></p>
+
+<h4>范例：访问某个数组元素</h4>
+
+<p>读取数组元素值的一般格式是： ${数组名[下标]} ，例如：</p>
+
+<p><code>
+$ echo ${city[0]}
+Beijing
+</code></p>
+
+<h4>范例：数组组合赋值</h4>
+
+<p>一个数组的各个元素可以利用上述方式一个元素一个元素地赋值，也可以组合赋值。定义一个数组并为其赋初值的一般形式是：</p>
+
+<p>数组名=(值1 值2 ... 值n)</p>
+
+<p>其中，各个值之间以空格分开。</p>
+
+<p>例如：</p>
+
+<p><code>
+$ A=(this is an example of shell script)
+$ echo ${A[0]} ${A[2]} ${A[3]} ${A[6]}
+this an example script
+$ echo ${A[8]}
+</code></p>
+
+<p>由于值表中初值共有7个，所以A的元素个数也是7。A[8]超出了已赋值的数组A的范围，就认为它是一个新元素，由于预先没有赋值，所以它的值是空串。</p>
+
+<p>若没有给出数组元素的下标，则数组名表示下标为0的数组元素，如city就等价于city[0]。</p>
+
+<h4>范例：列出数组中所有内容</h4>
+
+<p>使用*或@做下标，则会以数组中所有元素取代。</p>
+
+<p><code>
+$ echo ${A[*]}
+this is an example of shell script
+</code></p>
+
+<h4>范例：获取数组元素个数</h4>
+
+<p><code>
+$ echo ${#A[*]}
+7
+</code></p>
+
+<h3>参数传递</h3>
+
+<p>假如要编写一个shell来求两个数的和，可以怎么实现呢？ 为了介绍参数传递的使用，我们用vim编写一个这样的脚本：</p>
+
+<p><code>
+$ cat &gt; add
+let sum=$1+$2
+echo $sum
+</code></p>
+
+<p>保存后，我们执行一下：</p>
+
+<p><code>
+$ chmod a+x ./add
+$ ./add 5 10
+15
+</code></p>
+
+<p>可以看出5和10分别传给了$1和$2，其实这是shell自己设定的参数顺序，我们可以先定义好变量，然后传递进去。</p>
+
+<p>例如，修改上面的add文件得到：</p>
+
+<p><code>
+let sum=$X+$Y
+echo $sum
+</code></p>
+
+<p>现在我们，这样执行：</p>
+
+<p><code>
+$ X=5 Y=10 ./add
+15
+</code></p>
+
+<p>我们同样可以得到正确结果哦。</p>
+
+<h3>设置环境变量</h3>
+
+<p>export一个环境变量：</p>
+
+<p><code>
+$ export opid=True
+</code></p>
+
+<p>这样子就可以拉，如果要登陆以后都生效，可以直接添加到/etc/profile或者~/.bashrc里头。</p>
+
+<h3>键盘读起变量值</h3>
+
+<p>我们可以通过read来读取变量值，下面我们来等待用户输入一个值并且显示出来</p>
+
+<p><code>
+$ read -p "请输入一个值 ： "  input ; echo "你输入了一个值为 ：" $input
+请输入一个值 ： 21500
+你输入了一个值为 ： 21500
+</code></p>
+
+<h3>设置变量的只读属性</h3>
+
+<p>有些重要的shell变量，赋值后不应该修改，那么我们可设置他为readonly：</p>
+
+<p><code>
+$ oracle_home=/usr/oracle7/bin
+$ readonly oracle_home
+</code></p>
+
+<h3>条件测试命令test</h3>
+
+<p>语法：test 表达式
+如果表达式为真，则返回真，否则，返回假</p>
+
+<h4>范例：数值比较</h4>
+
+<p>先给出数值比较时常见的比较符：</p>
+
+<blockquote><p>-eg =；-ne !=；-gt >；-ge >=；-lt &lt;；-le &lt;=</p></blockquote>
+
+<p><code>
+$ test var1 -gt var2
+</code></p>
+
+<h3>范例：测试文件属性</h3>
+
+<p>文件的可读、可写、可执行，是否为普通文件，是否为目录分别对应：</p>
+
+<blockquote><p>-r   -w   -x     -f         -d</p></blockquote>
+
+<p><code>
+$ test -r filename
+</code></p>
+
+<h4>范例：字符传属性以及比较</h4>
+
+<blockquote><p>串的长度为零：-z； 非零:-n，如:</p></blockquote>
+
+<p><code>
+$ test -z s1
+</code></p>
+
+<p>如果串s1长度为零，返回真</p>
+
+<h4>范例：串比较</h4>
+
+<blockquote><p>相等"s1"="s2"； 不相等 "s1"!="s2"</p></blockquote>
+
+<p>我们还有一种比较串的方法(可以按字典序来比较哦)：</p>
+
+<p><code>
+$ if [[ 'abcde' &lt;'abcdf' ]]; then  echo "yeah,果然是诶"; fi
+yeah,果然是诶
+</code></p>
+
+<h3>整数算术或关系运算expr</h3>
+
+<p>可用该命令进行的运算有：</p>
+
+<blockquote><p>算术运算：+ - * / %；逻辑运算：= ! &lt; &lt;= > >=</p></blockquote>
+
+<p>如:</p>
+
+<p><code>
+$ i=5;expr $i+5
+</code></p>
+
+<p>另外，bc是linux下的一个计算器，可以进行一些算术计算</p>
+
+<h3>控制执行流程命令</h3>
+
+<h4>范例：条件分支命令if</h4>
+
+<p>if命令举例：</p>
+
+<p>下面的shell作用：判断输入的第一个参数的值是一个普通文件名，那么分页打印该文件；否则，判断它是否为目录名，若是则进入该目录并打印该目录下的所有文件，如果也不是目录名，那么提示相关信息。</p>
+
+<p>```
+if test -f $1
+then</p>
+
+<pre><code>          pr $1&gt;/dev/lp0
+</code></pre>
+
+<p>elif</p>
+
+<pre><code>          test-d $1
+</code></pre>
+
+<p>then</p>
+
+<pre><code>          (cd $1;pr *&gt;/dev/lp0)
+</code></pre>
+
+<p>else</p>
+
+<pre><code>            echo $1 is neither a file nor a directory
+</code></pre>
+
+<p>fi
+```</p>
+
+<h4>范例：case命令举例</h4>
+
+<p>case命令是一个基于模式匹配的多路分之命令，下面的shell将根据用户键盘输入情况决定下一步将执行那一组命令。</p>
+
+<p>```
+while ［ $reply!="y" ］ &amp;&amp; [ $reply!="Y" ]                         #下面将学习的循环语句
+do</p>
+
+<pre><code>    echo "\nAre you want to continue?(Y/N)\c"
+    read reply             #读取键盘
+    case $replay in
+          (y|Y) break;;         #退出循环
+          (n|N) echo "\n\nTerminating\n"
+                  exit 0;;
+                *) echo "\n\nPlease answer y or n"
+                    continue;       #直接返回内层循环开始出继续
+    esac
+</code></pre>
+
+<p>done
+```</p>
+
+<h4>范例：循环语句while, until</h4>
+
+<p>语法：</p>
+
+<p>```
+while/until 命令表1
+do</p>
+
+<pre><code>命令表2
+</code></pre>
+
+<p>done
+```</p>
+
+<p>区别是，前者在执行完命令表1后，如果出口状态为零，那么执行do后面的命令表2，然后回到起始处,而后者执行命令表1后，如果出口状态非零，才执行类似操作。 例子同上。</p>
+
+<h4>范例：有限循环命令for</h4>
+
+<p>语法：</p>
+
+<p>```
+for 变量名 in 字符串表
+do</p>
+
+<pre><code>命令表
+</code></pre>
+
+<p>done
+```</p>
+
+<p>举例：</p>
+
+<p>```
+FILE="test1.c myfile1.f pccn.h"
+for i in $FILE
+do</p>
+
+<pre><code>  cd ./tmp
+  cp $i $i.old
+  echo "$i copied"
+</code></pre>
+
+<p>done
+```</p>
+
+<h3>函数</h3>
+
+<p>先在我们来看看shell里头的函数怎么用</p>
+
+<p>先看个例子:我们写一个函数，然后调用它显示"Hello,World!"</p>
+
+<p>```
+$ cat > show</p>
+
+<h1>函数定义</h1>
+
+<p>function show
+{</p>
+
+<pre><code>echo $1$2;
+</code></pre>
+
+<p>}
+H="Hello,"
+W="World!"
+show $H $W
+```</p>
+
+<p>演示：</p>
+
+<p><code>
+$ chmod 770 show
+$./show
+Hello,World!
+</code></p>
+
+<p>呵呵，看出什么蹊跷了吗？</p>
+
+<p>$ show $H $W</p>
+
+<p>我们可以通过直接在函数名后面跟实参哦</p>
+
+<p>实参顺序对应“虚参”的$1,$2,$3..........</p>
+
+<p>注意一个地方哦，假如要传进去一个参数，这个参数中间带空格，怎么办呢？ 你先试试看。</p>
+
+<p>我们来显示"Hello World"(两个单词之间有个空格哦)</p>
+
+<p><code>
+function show
+{
+echo $1
+}
+HW="Hello World"
+show "$HW"
+</code></p>
+
+<p>看看，是不是ok拉，如果直接show $HW，肯定是不行的，因为$1只接受到了Hello，所以结果之显示Hello，原因是字符串变量必须用"包含起来。</p>
+
+<h3>后记</h3>
+
+<p>感兴趣的话继续学习哦！
+还有好多强大的东西值得你去学习呢，呵呵，比如cut, expr, sed, awk等等。</p>
+<h1>准备工作</h1>
+
+<h2>前言</h2>
+
+<p>到最后一节来写“开篇”，确实有点古怪。不过，在<a href="http://www.tinylab.org/shell-numeric-calculation/">第一篇（数值操作）</a>的开头实际上也算是一个小的开篇，那里提到整个序列的前提是需要有一定的shell编程基础，因此，为了能够让没有shell编程基础的读者也可以阅读这个序列，我到最后来重写这个开篇。开篇主要介绍什么是shell，shell运行环境，shell基本语法和调试技巧。</p>
+
+<h2>什么是Shell</h2>
+
+<p>首先让我们从下图看看shell在整个操作系统中所处的位置吧，该图的外圆描述了整个操作系统（比如debian/ubuntu/slackware等），内圆描述了操作系统的核心（比如linux kernel），而SHELL和GUI一样作为用户和操作系统之间的接口。</p>
+
+<p><img src="pic/UI_Shell_and_GUI.jpg" alt="Shell和GUI用户接口" /></p>
+
+<p>GUI提供了一种图形化的用户接口，使用起来非常简便易学；而SHELL则为用户提供了一种命令行的接口，接收用户的键盘输入，并分析和执行输入字符串中的命令，然后给用户返回执行结果，使用起来可能会复杂一些，但是由于占用的资源少，而且在操作熟练以后可能会提高工作效率，而且具有批处理的功能，因此在某些应用场合还非常流行。</p>
+
+<p>SHELL作为一种用户接口，它实际上是一个能够解释和分析用户键盘输入，执行输入中的命令，然后返回结果的一个解释程序(interpreter, 例如在linux下比较常用的bash)，我们可以通过下面的命令查看当前的SHELL：</p>
+
+<p><code>
+$ echo $SHELL
+/bin/bash
+$ ls -l /bin/bash
+-rwxr-xr-x 1 root root 702160 2008-05-13 02:33 /bin/bash
+</code></p>
+
+<p>该解释程序不仅能够解释简单的命令，而且可以解释一个具有特定语法结构的文件，这种文件被称作脚本(script)。它具体是如何解释这些命令和脚本文件的，这里不深入分析，请看<a href="http://www.cppblog.com/cuijixin/archive/2008/03/14/44463.html">《Linux命令行上程序执行的那一刹那》</a>。</p>
+
+<p>既然该程序(bash)可以解释具有一定语法结构的文件，那么我们就可以遵循某一语法来编写它，它有什么样的语法，如何运行，如何调试呢？下面我们以bash为例来讨论这几个方面。</p>
+
+<h2>搭建运行环境</h2>
+
+<p>为了方便后面的练习，我们先搭建一个基本运行环境：在一个linux操作系统中，有一个运行有bash的命令行在等待我们键入命令，这个命令行可以是图形界面下的terminal，也可以是字符界面的console，如果你发现当前SHELL不是bash，请用下面的方法替换它：</p>
+
+<p><code>
+$ chsh $USER -s /bin/bash
+$ su $USER
+</code></p>
+
+<p>或者是简单地键入bash</p>
+
+<p><code>
+$ bash
+$ echo $SHELL  # 确认一下
+/bin/bash
+</code></p>
+
+<p>如果没有安装linux操作系统，也可以考虑使用一些公共社区提供的Linux虚拟实验服务，一般都有提供远程SHELL，你可以通过telnet或者是ssh的客户端登录上去进行练习。</p>
+
+<p>有了基本的运行环境，那么如何来运行用户键入的命令或者是用户编写好的脚本文件呢?</p>
+
+<p>假设我们编写好了一个shell脚本，叫test.sh。</p>
+
+<p>第一种方法是确保我们执行的命令具有可执行权限，然后直接键入该命令执行它。</p>
+
+<p><code>
+$ chmod +x /path/to/test.sh
+$ /path/to/test.sh
+</code></p>
+
+<p>第二种方法是直接把sc.sh作为bash解释器的参数传入。</p>
+
+<p><code>
+$ bash /path/to/test.sh
+</code></p>
+
+<p>或</p>
+
+<p><code>
+$ source /path/to/test.sh
+</code></p>
+
+<p>或</p>
+
+<p><code>
+$ . /path/to/test.sh
+</code></p>
+
+<h2>基本语法介绍</h2>
+
+<p>先来一个Hello, World程序。</p>
+
+<p>下面来介绍一个shell程序的基本结构，以Hello, World为例：</p>
+
+<p>```</p>
+
+<h1>!/bin/bash -v</h1>
+
+<h1>test.sh</h1>
+
+<p>echo "Hello World"
+```</p>
+
+<p>把上面的代码保存为test.sh，然后通过上面两种不同的方式运行一下，可以看到如下的效果：</p>
+
+<p>方法一：</p>
+
+<p>```
+$ chmod +x test.sh
+$ ./test.sh
+ ./test.sh
+ #!/bin/bash -v</p>
+
+<p> echo "Hello, World"
+ Hello, World
+```</p>
+
+<p>方法二：</p>
+
+<p>```
+$ bash test.sh
+Hello, World</p>
+
+<p>$ source test.sh
+Hello, World</p>
+
+<p>$ . test.sh
+Hello, World
+```</p>
+
+<p>我们发现两者运行结果有区别，为什么呢？这里我们需要关注一下test.sh文件的内容，它仅仅有两行，第二行打印了Hello, World，两种方法都达到了目的，但是第一种方法却多打印了脚本文件本身的内容，为什么呢？</p>
+
+<p>原因在该文件的第一行，当我们直接运行该脚本文件(test.sh)时，该行告诉操作系统使用用#!符号之后面的解释器以及相应的参数来解释该脚本文件，通过分析第一行，我们发现对应的解释器以及参数是/bin/bash -v，而-v刚好就是要打印程序的源代码；但是我们在用第二种方法时没有给bash传递任何额外的参数，因此，它仅仅解释了脚本文件本身。</p>
+
+<p>其他语法细节请直接看<a href="http://www.tinylab.org/shell-programming-study-notes/">《Shell编程学习笔记》</a>。</p>
+
+<h2>Shell程序设计过程</h2>
+
+<p>SHELL语言作为解释型语言，它的程序设计过程跟编译型语言有些区别，其基本过程如下：</p>
+
+<ul>
+<li>设计算法</li>
+<li>用SHELL编写脚本程序实现算法</li>
+<li>直接运行脚本程序</li>
+</ul>
+
+
+<p>可见它没有编译型语言的"麻烦的"编译和链接过程，不过正是因为这样，它出错时调试起来不是很方便，因为语法错误和逻辑错误都在运行时出现。下面我们简单介绍一下调试方法。</p>
+
+<h2>调试方法介绍</h2>
+
+<p>可以直接参考资料：<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-shell-debug/index.html">shell脚本调试技术</a>。</p>
+
+<h2>小结</h2>
+
+<p>SHELL语言作为一门解释型语言，可以使用大量的现有工具，包括数值计算、符号处理、文件操作、网络操作等，因此，编写过程可能更加高效，但是因为它是解释型的，需要在执行过程中从磁盘上不断调用外部的程序并进行进程之间的切换，在运行效率方面可能有劣势，所以我们应该根据应用场合选择使用SHELL或是用其他的语言来编程。</p>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="http://www.cppblog.com/cuijixin/archive/2008/03/14/44463.html">《Linux命令行上程序执行的那一刹那》</a></li>
+<li><a href="http://www.tinylab.org/shell-programming-study-notes/">《linux shell编程学习笔记》</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-shell-debug/index.html">《shell脚本调试技术》</a></li>
+</ul>
+
+<h1>简介</h1>
+
+<h2>背景</h2>
+
+<p>早在2007年11月，当我在Linux操作系统下面学习Shell编程的时候，为了系统化地学习和总结Shell编程，专门制定了一个Shell编程范例的总结计划，当时的计划是：</p>
+
+<blockquote><p>这个系列将以面向“对象”（即我们操作的对象）来展开，并引入大量的实例，这样有助于让我们真正去学以致用，并在用的过程中提高兴趣。所以这个系列将不会专门介绍shell的语法，
+而是假设读者对shell编程有了一定的基础。</p>
+
+<p>另外，该系列到最后可能会涵盖：数值、逻辑值、字符串、文件、进程、文件系统等所有我们可以操作的“对象”，这个操作对象也将从低级到高级，进而上升到网络层面，整个通过各种
+方式连接起来的计算机的集合。实际上这也未尝不是在摸索unix的哲学，那"K.I.S.S"（Keep It Simple, Stupid）蕴藏的巨大能量。</p>
+
+<p>-- 摘自<a href="http://oss.lzu.edu.cn/old/modules/newbb/viewtopic.php?topic_id=1203&amp;forum=26&amp;post_id=4714#forumpost4714">《兰大开源社区 >> 脚本编程 >> Shell编程范例序列》</a></p></blockquote>
+
+<p>在2008年4月底，整个序列大部分内容和框架基本完成，后来因为实习和工作原因，整个序列并没有得以持续完善。不过相关的范例章节却得到了比较大的反响，很多热心的网友有大量评论和转载，例如，在百度文库转载的一份<a href="http://wenku.baidu.com/link?url=WChC-PdR7rqPiwkuo70l2zGo3YVCFrG2cRRwMXsRh4niknUlAWd2eI-AMAiP2GbxhL-BFfV_CL65zUXjEXKYf0zVhF2AHZych7X1_b4pg47">《Shell编程范例之字符串操作》</a>的访问量都已经达到将近3000的阅读量。说明，整个序列还是有比较大的阅读群体。</p>
+
+<h2>现状</h2>
+
+<p>考虑到整个Linux世界的蓬勃发展，Shell的使用环境越来越多，相关的使用群体会不断增加，所以最近计划把整个序列重新整理和完善，以自由书籍的方式不断更新，以便惠及更多的读者。</p>
+
+<p>目前已经把早期的内容重新整理到本站，整个序列用<a href="http://www.tinylab.org/start-posting-with-markdown/">Markdown</a>重写，可以直接通过<a href="http://tinylab.org">TinyLab.org</a>每个页面右上角的Print/PDF插件直接下载所有章节的PDF版本。</p>
+
+<p>整个初稿的索引篇是：<a href="http://www.tinylab.org/shell-programming-paradigm-series-index-review/">《Shell编程范例之索引篇》</a>，其内容结构如下：</p>
+
+<ul>
+<li><a href="http://www.tinylab.org/shell-programming-paradigm-begins-with/">Shell编程范例之开篇</a> (更新时间：2007-07-21)</li>
+<li><a href="http://www.tinylab.org/shell-numeric-calculation/">Shell编程范例之数值运算</a> (更新时间：2007-11-9)</li>
+<li><a href="http://www.tinylab.org/shell-programming-paradigm-of-boolean-operations/">Shell编程范例之布尔运算</a> (更新时间：2007-10-30)</li>
+<li><a href="http://www.tinylab.org/shell-programming-paradigm-of-string-manipulation/">Shell编程范例之字符串操作</a> (更新时间：2007-11-21)</li>
+<li><a href="http://www.tinylab.org/shell-programming-paradigms-of-file-operations/">Shell编程范例之文件操作</a> (更新时间：2007-12-5)</li>
+<li><a href="http://www.tinylab.org/shell-programming-paradigm-in-file-system-operations/">Shell编程范例之文件系统操作</a> (更新时间：2007-12-29)</li>
+<li><a href="http://www.tinylab.org/shell-programming-paradigm-of-process-operations/">Shell编程范例之进程操作</a> (更新时间：2008-02-22)</li>
+<li><a href="http://www.tinylab.org/shell-programming-paradigm-of-network-operations/">Shell编程范例之网络操作</a> (更新时间：2008-04-19)</li>
+<li><a href="http://www.tinylab.org/summary-of-shell-programming-paradigm-article/">Shell编程范例之总结篇</a> (更新时间：2008-07-21)<br></li>
+</ul>
+
+
+<h2>计划</h2>
+
+<p>后续除了继续在<a href="http://tinylab.org">TinyLab.org</a>以Blog的形式持续更新以外，打算重新规划、增补整个序列的内容，并以开源项目的方式在<a href="http://tinylab.org">TinyLab.org</a>持续维护，并通过这个平台接受读者的反馈，直到可以出版，再找出版商正式发行出版。</p>
+
+<p>欢迎大家指出本书初稿中的不足，甚至参与到相关章节的写作、校订和完善当中来。</p>
+
+<p>如果有时间和兴趣，欢迎参与，可以通过<a href="http://www.tinylab.org/contact/">Contact TinyLab</a>发送邮件给我们，也可以直接在<a href="http://tinylab.org">TinyLab.org</a>的相关页面进行评论回复。</p>
+</body></html>
