@@ -22,6 +22,7 @@ Though texlive 2011 can be installed separately, the default one texlive 2009 fr
     $ sudo apt-get install texlive-xetex
     $ sudo apt-get install texlive-latex-recommended # main packages
     $ sudo apt-get install texlive-latex-extra # package titlesec
+    $ sudo apt-get install pdftk
 	
 You need to install related fonts for Chinese, fortunately they exist in ubuntu source also.
     
