@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -rf latex/zh/*.out
+rm -rf latex/zh/*.toc
+rm -rf latex/zh/*.aux 
+rm -rf latex/zh/*.pdf

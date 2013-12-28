@@ -299,13 +299,13 @@ if命令举例：
 ```
 if test -f $1
 then
-              pr $1>/dev/lp0
+	pr $1>/dev/lp0
 elif
-              test-d $1
+	test-d $1
 then
-              (cd $1;pr *>/dev/lp0)
+	(cd $1;pr *>/dev/lp0)
 else
-                echo $1 is neither a file nor a directory
+	echo $1 is neither a file nor a directory
 fi
 ```
 
@@ -317,15 +317,15 @@ case命令是一个基于模式匹配的多路分之命令，下面的shell将�
 ```
 while ［ $reply!="y" ］ && [ $reply!="Y" ]                         #下面将学习的循环语句
 do
-        echo "\nAre you want to continue?(Y/N)\c"
-        read reply             #读取键盘
-        case $replay in
-              (y|Y) break;;         #退出循环
-              (n|N) echo "\n\nTerminating\n"
-                      exit 0;;
-                    *) echo "\n\nPlease answer y or n"
-                        continue;       #直接返回内层循环开始出继续
-        esac
+	echo "\nAre you want to continue?(Y/N)\c"
+	read reply             #读取键盘
+	case $replay in
+		(y|Y) break;;         #退出循环
+		(n|N) echo "\n\nTerminating\n"
+		      exit 0;;
+		    *) echo "\n\nPlease answer y or n"
+			continue;       #直接返回内层循环开始出继续
+	esac
 done
 ```
 
@@ -361,9 +361,9 @@ done
 FILE="test1.c myfile1.f pccn.h"
 for i in $FILE
 do
-      cd ./tmp
-      cp $i $i.old
-      echo "$i copied"
+	cd ./tmp
+	cp $i $i.old
+	echo "$i copied"
 done
 ```
 
@@ -379,7 +379,7 @@ $ cat > show
 # 函数定义
 function show
 {
-    echo $1$2;
+	echo $1$2;
 }
 H="Hello,"
 W="World!"
@@ -409,7 +409,7 @@ $ show $H $W
 ```
 function show
 {
-echo $1
+	echo $1
 }
 HW="Hello World"
 show "$HW"

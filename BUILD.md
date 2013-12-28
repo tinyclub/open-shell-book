@@ -31,7 +31,7 @@ You need to install related fonts for Chinese, fortunately they exist in ubuntu 
 
 Then it should work perfectly
 
-	$ ./mkbok
+	$ ./mk
 
 Configure book
 
