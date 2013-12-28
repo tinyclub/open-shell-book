@@ -1,19 +1,14 @@
-# Software Development Book Contents#
+# PLEAC-Shell: Write a book about Shell examples like PLEAC project # 
 
-[![Build Status](https://secure.travis-ci.org/larrycai/kaiyuanbook.png)](http://travis-ci.org/larrycai/kaiyuanbook)
+Project Homepage: <http://www.tinylab.org/project/pleac-shell/>
+Project Repository: <https://git.gitorious.org/tinylab/pleac-shell.git>
 
-This is the book for how to write opensource books, it covers markdown,pandoc,latex
-
-Hope you enjoy it, I hope it helps you learn better software development. 
-
-Please check BUILD.md for how to making ebooks by yourself, 
-
-credit to [Pro Git](http://github.com/progit/progit) 
+Please check BUILD.md for building and README for this project details.
 
 #Errata#
 
 If you see anything that is technically wrong or otherwise in need of
-correction, please email me at larry dot caiyu at gmail dot com to inform me.
+correction, please email me at wuzhangjin at gmail dot com to inform me.
 
 ### License
   The license is under ![](http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png), see [CC BY NC ND 3.0](http://creativecommons.org/licenses/by-nc-nd/3.0/) for more
