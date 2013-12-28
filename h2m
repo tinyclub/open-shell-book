@@ -1,0 +1,7 @@
+#!/bin/bash
+
+from=$1
+to=${from%.*}.markdown
+
+echo "Convert from $from to $to"
+pandoc -f html -t markdown $from -o $to 
