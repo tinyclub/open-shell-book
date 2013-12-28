@@ -41,6 +41,14 @@ Install more
 
 	$ sudo gem install debugger debugger-linecache debugger-ruby_core_source linecache19 ruby-debug-base19 ruby-debug-ide ruby-debug-ide19 ruby-debug19 ruby_core_source
 
+Convert html to markdown
+
+	$ pandoc -f html -t markdown test.html -o test.markdown
+
+Convert picture to pdf
+
+	$ convert -page A4 test.png -gravity center -format pdf test.pdf
+
 Just remind you, some [extra pandoc markdown format](http://johnmacfarlane.net/pandoc/README.html) is used inside this book:
 
   * code syntax highlight (doesn't work in pdf, while it should work in html/epub which needed later)
