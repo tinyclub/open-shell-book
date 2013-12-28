@@ -1,6 +1,7 @@
 ---
   name: PLEAC-Shell 
   build: pdf
+  cover: pic/cover.png
   lang: zh
   license: ccbyncnd30
   config: latex/config.yml
