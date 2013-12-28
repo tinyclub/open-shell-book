@@ -1,7 +1,7 @@
-# PLEAC-Shell: Write a book about Shell examples like PLEAC project # 
+# PLEAC-Shell: Write a book about Shell examples like PLEAC project
 
-Project Homepage: <http://www.tinylab.org/project/pleac-shell/>
-Project Repository: <https://git.gitorious.org/tinylab/pleac-shell.git>
+- Project Homepage: <http://www.tinylab.org/project/pleac-shell/>
+- Project Repository: <https://git.gitorious.org/tinylab/pleac-shell.git>
 
 Please check BUILD.md for building and README for this project details.
 
