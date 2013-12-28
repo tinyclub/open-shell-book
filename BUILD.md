@@ -29,17 +29,13 @@ You need to install related fonts for Chinese, fortunately they exist in ubuntu 
     $ sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai # from arphic 
 	$ sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei # from WenQuanYi
 
-Then it should work perfectly
-
-	$ ./mk
-
-Configure book
-
-	$ vim .mkbok.yml
-
 Install more
 
 	$ sudo gem install debugger debugger-linecache debugger-ruby_core_source linecache19 ruby-debug-base19 ruby-debug-ide ruby-debug-ide19 ruby-debug19 ruby_core_source
+
+Then it should work perfectly
+
+	$ ./mk
 
 Convert html to markdown
 
@@ -48,6 +44,18 @@ Convert html to markdown
 Convert picture to pdf
 
 	$ convert -page A4 test.png -gravity center -format pdf test.pdf
+
+Configure book
+
+	$ vim .mkbok.yml
+
+Update version
+
+	$ vim version
+
+Release the book
+
+	$ ./release.sh
 
 Just remind you, some [extra pandoc markdown format](http://johnmacfarlane.net/pandoc/README.html) is used inside this book:
 

@@ -32,6 +32,11 @@
 - [Shell编程范例之网络操作](http://www.tinylab.org/shell-programming-paradigm-of-network-operations/) (更新时间：2008-04-19)
 - [Shell编程范例之总结篇](http://www.tinylab.org/summary-of-shell-programming-paradigm-article/) (更新时间：2008-07-21)<br>
 
+基于一个Markdown的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，最近刚重新整理了该书籍，并发布在gitorious.org上TinyLab的[项目仓库](https://gitorious.org/tinylab/pleac-shell)中。项目相关信息如下：
+
+- 项目首页：<http://www.tinylab.org/project/pleac-shell/>
+- 代码仓库：<https://gitorious.org/tinylab/pleac-shell>
+
 ## 计划
 
 后续除了继续在[TinyLab.org](http://tinylab.org)以Blog的形式持续更新以外，打算重新规划、增补整个序列的内容，并以开源项目的方式在[TinyLab.org](http://tinylab.org)持续维护，并通过这个平台接受读者的反馈，直到可以出版，再找出版商正式发行出版。

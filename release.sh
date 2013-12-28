@@ -27,4 +27,5 @@ pdftk A=ebooks/cover.pdf B=${bookName}.zh.pdf cat A B output ${bookName}.zh.book
 
 echo
 echo "release:"
-echo "${bookName}.zh.pdf --> ${bookName}.zh.book.${bookVersion}.pdf"
+echo
+echo -e "\t${bookName}.zh.pdf --> ${bookName}.zh.book.${bookVersion}.pdf"
