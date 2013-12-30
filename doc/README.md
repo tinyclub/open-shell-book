@@ -28,24 +28,25 @@ Shell的兼容性等。所有用例建议支持多个Shell。
 
 ## Outline
 
-- Shell编程范例之开篇 (更新时间：2007-07-21)
-- Shell编程范例之数值运算 (更新时间：2007-11-9)
-- Shell编程范例之布尔运算  (更新时间：2007-10-30)
-- Shell编程范例之字符串操作  (更新时间：2007-11-21)
-- Shell编程范例之文件操作  (更新时间：2007-12-5)
-- Shell编程范例之文件系统操作  (更新时间：2007-12-29)
-- Shell编程范例之进程操作  (更新时间：2008-02-22)
-- Shell编程范例之网络操作  (更新时间：2008-04-19)
-- Shell编程范例之总结篇(更新时间：2008-07-21)
+- [Shell编程范例之开篇](http://www.tinylab.org/shell-programming-paradigm-begins-with/) (更新时间：2007-07-21)
+- [Shell编程范例之数值运算](http://www.tinylab.org/shell-numeric-calculation/) (更新时间：2007-11-9)
+- [Shell编程范例之布尔运算](http://www.tinylab.org/shell-programming-paradigm-of-boolean-operations/) (更新时间：2007-10-30)
+- [Shell编程范例之字符串操作](http://www.tinylab.org/shell-programming-paradigm-of-string-manipulation/) (更新时间：2007-11-21)
+- [Shell编程范例之文件操作](http://www.tinylab.org/shell-programming-paradigms-of-file-operations/) (更新时间：2007-12-5)
+- [Shell编程范例之文件系统操作](http://www.tinylab.org/shell-programming-paradigm-in-file-system-operations/) (更新时间：2007-12-29)
+- [Shell编程范例之进程操作](http://www.tinylab.org/shell-programming-paradigm-of-process-operations/) (更新时间：2008-02-22)
+- [Shell编程范例之网络操作](http://www.tinylab.org/shell-programming-paradigm-of-network-operations/) (更新时间：2008-04-19)
+- [Shell编程范例之总结篇](http://www.tinylab.org/summary-of-shell-programming-paradigm-article/) (更新时间：2008-07-21)<br>
 
 ## Schedule
 
 争取在一个礼拜左右整理完初稿，两个礼拜内整理完成后正式对外发布Review版本，一个月内正式发布0.1版本。
-争取在1.0版本完成该书的大部分目标，并争取出版社的支持，进行出版。
+
+争取在1.0版本时参考[PLEAC项目](http://pleac.sourceforge.net/)完成该书的大部分目标，并争取出版社的支持，进行出版。
 
 ## References
 
 相关内容发布在兰大开源社区以及Blog中：
 
-- [Shell编程范例序列](http://localhost/blog/article.php?tid_1635.html)
+- [Shell编程范例序列](http://www.tinylab.org/shell-programming-paradigm-series-index-review/)
 - [Shell优化](http://oss.lzu.edu.cn/old/modules/newbb/viewforum.php?forum=26)
