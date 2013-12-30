@@ -21,14 +21,12 @@ mkdir -p $outputDir
 
 echo 
 echo "The generation process will start now."
-#${baseDir}/latex/makepdf $argString
 
 #convert -resize 50% pic/cover.png pic/cover_resize.png
 #mv pic/cover_resize.png pic/cover.png
-convert -page A4 $coverImage -gravity center -format pdf ebooks/cover.pdf
+convert -page A4 $coverImage -gravity center -format pdf pdf/cover.pdf
 
-#pdftk A=ebooks/cover.pdf B=kaiyuanbook.zh.pdf cat A1 B2-end output kaiyuanbook.zh.book.pdf 
-pdftk A=ebooks/cover.pdf B=${bookName}.zh.pdf cat A B output ${bookName}.zh.book.pdf
+pdftk A=pdf/cover.pdf B=pdf/${bookName}.zh.pdf cat A B output pdf/${bookName}.zh.book.pdf
 
 echo
-echo "${bookName}.zh.pdf --> ${bookName}.zh.book.pdf"
+echo "pdf/${bookName}.zh.pdf --> pdf/${bookName}.zh.book.pdf"

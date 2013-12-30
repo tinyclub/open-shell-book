@@ -361,8 +361,8 @@ def generate_pdf(options)
             end
 
             unless abort
-                print "\tMoving output to #{options["name"]}.#{lang}.pdf... "
-                            mv("#{dir}/main.pdf", "#$root/#{options["name"]}.#{lang}.pdf")
+                print "\tMoving output to #$outDir/#{options["name"]}.#{lang}.pdf... "
+                            mv("#{dir}/main.pdf", "#$outDir/#{options["name"]}.#{lang}.pdf")
                 puts "done"
             else
                 print "\tConvert error, exit !\n"

@@ -13,4 +13,4 @@ bookLang=`cat .mkbok.yml | grep lang: | cut -d':' -f2 | tr -d ' '`
 [ $? -ne 0 ] && echo "ERR: Convert failed with ./mkbok" && exit 1
 
 # Read it
-evince ${bookName}.${bookLang}.pdf 
+evince pdf/${bookName}.${bookLang}.pdf 

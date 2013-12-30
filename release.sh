@@ -19,13 +19,12 @@ bookVersion=`cat version`
 ./mkbok
 
 # Generate the cover pdf page from cover picture
-mkdir -p ebooks/
-convert -page A4 $bookCover -gravity center -format pdf ebooks/cover.pdf
+convert -page A4 $bookCover -gravity center -format pdf pdf/cover.pdf
 
 # Insert the cover page
-pdftk A=ebooks/cover.pdf B=${bookName}.zh.pdf cat A B output ${bookName}.zh.book.${bookVersion}.pdf
+pdftk A=pdf/cover.pdf B=pdf/${bookName}.zh.pdf cat A B output pdf/${bookName}.zh.book.${bookVersion}.pdf
 
 echo
 echo "release:"
 echo
-echo -e "\t${bookName}.zh.pdf --> ${bookName}.zh.book.${bookVersion}.pdf"
+echo -e "\tpdf/${bookName}.zh.pdf --> pdf/${bookName}.zh.book.${bookVersion}.pdf"
