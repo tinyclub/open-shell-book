@@ -8,8 +8,9 @@ bookLang=`cat .mkbok.yml | grep lang: | cut -d':' -f2 | tr -d ' '`
 # Clean the temp files of latex in latex/zh/
 ./mkclean
 
-# Convert makrdowns to pdf
+# Convert markdowns to pdf
 ./mkbok
+[ $? -ne 0 ] && echo "ERR: Convert failed with ./mkbok" && exit 1
 
 # Read it
 evince ${bookName}.${bookLang}.pdf 

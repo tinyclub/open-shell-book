@@ -253,7 +253,7 @@ def generate_pdf(options)
     unless missing.empty?
         puts "Missing dependencies: #{missing.join(', ')}."
         puts "Install these and try again."
-        exit
+        exit 1
     end
 
     puts "Will generate pdf for the following languages using template #{options["template"]}:"
@@ -379,7 +379,7 @@ def generate_ebook(options)
     unless missing.empty?
         puts "Missing dependencies: #{missing.join(', ')}."
         puts "Install these and try again."
-        exit
+        exit 1
     end
     
     puts " "
