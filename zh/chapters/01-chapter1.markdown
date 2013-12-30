@@ -82,7 +82,7 @@ $ . /path/to/test.sh
 ```
 #!/bin/bash -v
 # test.sh
-echo "Hello World"
+echo "Hello, World"
 ```
 
 把上面的代码保存为test.sh，然后通过上面两种不同的方式运行一下，可以看到如下的效果：
