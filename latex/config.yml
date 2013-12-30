@@ -1,5 +1,5 @@
 default:
-  title: Learn writing opensource book
+  title: Shell编程范例序列
   font: Liberation Serif
   bold: "{* Bold}"
   mono: Liberation Mono
