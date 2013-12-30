@@ -17,6 +17,7 @@ bookVersion=`cat version`
 
 # Convert makrdowns to pdf
 ./mkbok
+[ $? -ne 0 ] && echo "ERR: Convert failed with ./mkbok" && exit 1
 
 # Generate the cover pdf page from cover picture
 convert -page A4 $bookCover -gravity center -format pdf pdf/cover.pdf
