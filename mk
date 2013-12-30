@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# ./mk -- Make pdf without cover page
+#
 
 # Get book name and language
 bookName=`cat .mkbok.yml | grep name | cut -d':' -f2 | tr -d ' '`
