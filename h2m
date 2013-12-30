@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -z "$1" ] && echo "Usage: $0 xxx.html" && exit 1
+
 from=$1
 to=${from%.*}.markdown
 
