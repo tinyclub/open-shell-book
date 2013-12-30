@@ -9,17 +9,23 @@ require 'pathname'
 
 include FileUtils
 
+$here = File.expand_path(File.dirname(__FILE__))
+$root = File.join($here, '..')
+$outDir = File.join($root, 'pdf')
+
 def main()
     options = {
         "build"=> "pdf",
         "lang" => "zh",
-        "config"        => "latex/config.yml",
+        "config"        => "config/main.yml",
         "template"      => "latex/template.tex",
         "chapter-files" => "*/*.markdown",
         "appendix-files"=> "*appendix/*.markdown",
         "jeykll"        => false
     }
-    config_file = File.join('.mkbok.yml')
+
+    $configDir = File.join($root, '/config/')
+    config_file = File.join($configDir, 'basic.yml')
     if File.exists? config_file
         config_options = YAML.load_file(config_file)
         options.merge!(config_options)
@@ -55,7 +61,7 @@ def main()
             unless File.exists? config
                 raise ArgumentError,"config file \"#{config}\" doesn't exist"
             end
-            options["config"] = config
+            options["config"] = File.join($root, $config)
         end
         opts.on("-t","--template template.tex","latex template file") do |template|
             unless File.exists? template
@@ -81,9 +87,6 @@ def main()
     option_parser.parse!
 
     #$here = File.expand_path(File.dirname(__FILE__))
-    $here = Dir.getwd
-    $root = File.join($here)
-    $outDir = File.join($root, 'pdf')
     options["name"] = File.basename(Dir.getwd) unless options["name"]
     options["outputformat"] = options["build"].split(',')
 

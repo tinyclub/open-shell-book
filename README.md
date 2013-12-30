@@ -5,7 +5,7 @@
 - Project Homepage: <http://www.tinylab.org/project/pleac-shell/>
 - Project Repository: <https://git.gitorious.org/tinylab/pleac-shell.git>
 
-Please check BUILD.md for building and README for this project details.
+Please check doc/BUILD.md for building and doc/README.md for the project details.
 
 ## Errata
 

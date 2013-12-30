@@ -22,7 +22,7 @@ Though texlive 2011 can be installed separately, the default one texlive 2009 fr
     $ sudo apt-get install texlive-xetex
     $ sudo apt-get install texlive-latex-recommended # main packages
     $ sudo apt-get install texlive-latex-extra # package titlesec
-    $ sudo apt-get install pdftk
+    $ sudo apt-get install imagemagick # for convert picture to pdf
 	
 You need to install related fonts for Chinese, fortunately they exist in ubuntu source also.
     
@@ -31,31 +31,47 @@ You need to install related fonts for Chinese, fortunately they exist in ubuntu 
 
 Install more
 
-	$ sudo gem install debugger debugger-linecache debugger-ruby_core_source linecache19 ruby-debug-base19 ruby-debug-ide ruby-debug-ide19 ruby-debug19 ruby_core_source
+    $ sudo gem install debugger debugger-linecache debugger-ruby_core_source linecache19 ruby-debug-base19 ruby-debug-ide ruby-debug-ide19 ruby-debug19 ruby_core_source
 
 Then it should work perfectly
 
-	$ ./mk
+    $ make 
+
+Read the book
+
+    $ make read
 
 Convert html to markdown
 
-	$ pandoc -f html -t markdown test.html -o test.markdown
+    $ pandoc -f html -t markdown test.html -o test.markdown
+    or
+    $ tools/h2m test.html
 
 Convert picture to pdf
 
-	$ convert -page A4 test.png -gravity center -format pdf test.pdf
+    $ convert -page A4 pic/cover.png -gravity center -format pdf pdf/cover.pdf
 
 Configure book
 
-	$ vim .mkbok.yml
+    $ vim config/basic.yml
+    and
+    $ vim config/main.yml
+
+Modify the latex template
+
+    $ vim latex/template.tex
 
 Update version
 
-	$ vim version
+    $ vim version
 
 Release the book
 
-	$ ./release.sh
+    $ make release
+
+Read the released book
+
+    $ make read-full
 
 Just remind you, some [extra pandoc markdown format](http://johnmacfarlane.net/pandoc/README.html) is used inside this book:
 

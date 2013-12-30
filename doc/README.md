@@ -1,11 +1,11 @@
 
 
-	Shell Programming Series
+# Shell Programming Series
 
-	Author: Wu Zhangjin <wuzhangjin@gmail.com>
-	Date  : Sat Aug 10 02:25:08 CST 2013
+- Author: Wu Zhangjin <wuzhangjin@gmail.com>
+- Date  : Sat Aug 10 02:25:08 CST 2013
 
-1. Introduction
+## Introduction
 
 2007年开始系统地学习Shell编程，并在兰大开源社区写了序列文章。
 
@@ -26,30 +26,26 @@ Shell的兼容性等。所有用例建议支持多个Shell。
 也可以考虑前期仅仅针对早前的内容做一个总结和完善，更多内容
 等待后续版本再添加，不过优化部分可以考虑单独列出来。
 
-2. Outline
+## Outline
 
-	[0] shell编程范例之开篇 (更新时间：2007-07-21)
-	（shell编程环境介绍与搭建，包括shell基本语法、运行环境、调试技巧等）
-	[1] shell编程范例之数值运算 (更新时间：2007-11-9)
-	[2] shell编程范例之布尔运算  (更新时间：2007-10-30)
-	[3] shell编程范例之字符串操作  (更新时间：2007-11-21)
-	[4] shell编程范例之文件操作  (更新时间：2007-12-5)
-	[5] shell编程范例之文件系统操作  (更新时间：2007-12-29)
-	[6] shell编程范例之进程操作  (更新时间：2008-02-22)
-	（Linux开发环境、ELF文件加载分析、进程管理、进程通信等）
-	[7] shell编程范例之网络操作  (更新时间：2008-04-19)
-	（日常网路使用、网络服务与管理、网络安全、网络协议分析等）
-	[8] shell编程范例之总结篇(更新时间：2008-07-21)
-	（shell编程注意事项、一些编程框架等）
+- Shell编程范例之开篇 (更新时间：2007-07-21)
+- Shell编程范例之数值运算 (更新时间：2007-11-9)
+- Shell编程范例之布尔运算  (更新时间：2007-10-30)
+- Shell编程范例之字符串操作  (更新时间：2007-11-21)
+- Shell编程范例之文件操作  (更新时间：2007-12-5)
+- Shell编程范例之文件系统操作  (更新时间：2007-12-29)
+- Shell编程范例之进程操作  (更新时间：2008-02-22)
+- Shell编程范例之网络操作  (更新时间：2008-04-19)
+- Shell编程范例之总结篇(更新时间：2008-07-21)
 
-3. Schedule
+## Schedule
 
 争取在一个礼拜左右整理完初稿，两个礼拜内整理完成后正式对外发布Review版本，一个月内正式发布0.1版本。
 争取在1.0版本完成该书的大部分目标，并争取出版社的支持，进行出版。
 
-4. References
+## References
 
 相关内容发布在兰大开源社区以及Blog中：
 
-Shell编程范例序列：http://localhost/blog/article.php?tid_1635.html
-Shell优化：http://oss.lzu.edu.cn/old/modules/newbb/viewforum.php?forum=26
+- [Shell编程范例序列](http://localhost/blog/article.php?tid_1635.html)
+- [Shell优化](http://oss.lzu.edu.cn/old/modules/newbb/viewforum.php?forum=26)

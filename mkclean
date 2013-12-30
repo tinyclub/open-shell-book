@@ -1,4 +1,0 @@
-#!/bin/bash
-
-rm -rf latex/zh/*
-rm -rf pdf/*

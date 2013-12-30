@@ -4,7 +4,7 @@
   cover: pic/cover.png
   lang: zh
   license: ccbyncnd30
-  config: latex/config.yml
+  config: config/main.yml
   template: latex/template.tex
   preface-files: preface/*.markdown
   chapter-files: chapters/*.markdown
