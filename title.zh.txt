@@ -1,2 +1,0 @@
-% Shell编程范例序列
-% TinyLab.org|泰晓实验室
