@@ -492,14 +492,14 @@ $ for i in 1..5; do echo -n "$i "; done
 
 ```
 $ wget -c http://tinylab.org
-$ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | uniq -c
+$ cat index.html | sed -e "s/[^a-zA-Z]/\n/g" | grep -v ^$ | sort | uniq -c
 ```
 
 统计出现频率最高的前10个单词：
 
 ```
 $ wget -c http://tinylab.org
-$ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | uniq -c | sort -n -k 1 -r | head -10
+$ cat index.html | sed -e "s/[^a-zA-Z]/\n/g" | grep -v ^$ | sort | uniq -c | sort -n -k 1 -r | head -10
     524 a
     238 tag
     205 href
@@ -515,7 +515,7 @@ $ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | uniq -c | sort
 说明：
 
 * `cat index.html`: 输出index.html文件里的内容  
-* `sed -e "s/[^a-zA-Z]/n/g"`: 把非字母的字符全部替换成空格，这样整个文本只剩下字母字符  
+* `sed -e "s/[^a-zA-Z]/\n/g"`: 把非字母的字符全部替换成空格，这样整个文本只剩下字母字符  
 * `grep -v ^$`:去掉空行  
 * `sort`: 排序  
 * `uniq -c`：统计相同行的个数，即每个单词的个数  
@@ -547,7 +547,7 @@ FILE=$1
 for n in $(seq $WORDS_NUM)
 do
 	shift
-	cat $FILE | sed -e "s/[^a-zA-Z]/n/g" \
+	cat $FILE | sed -e "s/[^a-zA-Z]/\n/g" \
 		| grep -v ^$ | sort | grep ^$1$ | uniq -c
 done
 ```
@@ -587,7 +587,7 @@ FILE=$1
 for n in $(seq $WORDS_NUM)
 do
 	shift
-	cat $FILE | sed -e "s/[^a-zA-Z]/n/g" \
+	cat $FILE | sed -e "s/[^a-zA-Z]/\n/g" \
 		| grep -v ^$ | sort | uniq -c | grep " $1$"
 done
 ```
@@ -604,7 +604,7 @@ $ ./statistic_words.sh index.html tinylab linux python
 说明：很明显，采用第一种办法效率要高很多，因为第一种办法提前找出了需要统计的单词，然后再统计，而后者则不然。实际上，如果使用grep的-E选项，我们无须引入循环，而用一条命令就可以搞定：
 
 ```
-$ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | grep -E "^tinylab$|^linux$" | uniq -c
+$ cat index.html | sed -e "s/[^a-zA-Z]/\n/g" | grep -v ^$ | sort | grep -E "^tinylab$|^linux$" | uniq -c
      43 linux
     175 tinylab
 ```
@@ -612,7 +612,7 @@ $ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | grep -E "^tiny
 或者
 
 ```
-$ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | egrep  "^tinylab$|^linux$" | uniq -c
+$ cat index.html | sed -e "s/[^a-zA-Z]/\n/g" | grep -v ^$ | sort | egrep  "^tinylab$|^linux$" | uniq -c
      43 linux
     175 tinylab
 ```
@@ -620,7 +620,7 @@ $ cat index.html | sed -e "s/[^a-zA-Z]/n/g" | grep -v ^$ | sort | egrep  "^tinyl
 说明：需要注意到sed命令可以直接处理文件，而无需通过cat命令输出以后再通过管道传递，这样可以减少一个不必要的管道操作，所以上述命令可以简化为：
 
 ```
-$ sed -e "s/[^a-zA-Z]/n/g" index.html | grep -v ^$ | sort | egrep  "^tinylab$|^linux$" | uniq -c
+$ sed -e "s/[^a-zA-Z]/\n/g" index.html | grep -v ^$ | sort | egrep  "^tinylab$|^linux$" | uniq -c
      43 linux
     175 tinylab
 ```
