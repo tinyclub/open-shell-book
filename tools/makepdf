@@ -109,12 +109,12 @@ end
 
 def figures(&block)
 	begin
-		Dir["#$root/figures/18333*.png"].each do |file|
+		Dir["#$root/pic/18333*.png"].each do |file|
 			cp(file, file.sub(/18333fig0(\d)0?(\d+)\-tn/, '\1.\2'))
 		end
 		block.call
 	ensure
-		Dir["#$root/figures/18333*.png"].each do |file|
+		Dir["#$root/pic/18333*.png"].each do |file|
 			rm(file.gsub(/18333fig0(\d)0?(\d+)\-tn/, '\1.\2'))
 		end
 	end
@@ -152,10 +152,10 @@ def pre_pandoc(string, config)
 		
         # convert div figures to normal markdown format
         # http://johnmacfarlane.net/pandoc/README.html
-        s /^<div class=\"figures\"> <img src=\"..\/figures\/(.*)\".*<\/div>/, '![](figures/\1)\ '
+        s /^<div class=\"figures\"> <img src=\"..\/pic\/(.*)\".*<\/div>/, '![](pic/\1)\ '
         
         # ![alt](../figures/LASO-tiny210-433.jpg) => ![alt](figures/LASO-tiny210-433.jpg)
-        s /^!\[(.*)\]\([\.\/]*\/(figures\/.*)\)/, '![\1](\2)'
+        s /^!\[(.*)\]\([\.\/]*\/(pic\/.*)\)/, '![\1](\2)'
         # " 
         
 		# Turns URLs into clickable links
@@ -404,7 +404,7 @@ def generate_ebook(options)
         Dir[File.join(dir, '**', '*.markdown')].sort.each do |input|
             puts "\tProcessing #{input}"
             content = File.read(input)
-            content.gsub!(/Insert\s+(.*)(\.png)\s*\n?\s*#{figure_title}\s+(.*)/, '![\3](figures/\1-tn\2 "\3")')
+            content.gsub!(/Insert\s+(.*)(\.png)\s*\n?\s*#{figure_title}\s+(.*)/, '![\3](pic/\1-tn\2 "\3")')
             book_content << content
         end
 
