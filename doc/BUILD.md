@@ -22,7 +22,6 @@ Though texlive 2011 can be installed separately, the default one texlive 2009 fr
     $ sudo apt-get install texlive-xetex
     $ sudo apt-get install texlive-latex-recommended # main packages
     $ sudo apt-get install texlive-latex-extra # package titlesec
-    $ sudo apt-get install imagemagick # for convert picture to pdf
 	
 You need to install related fonts for Chinese, fortunately they exist in ubuntu source also.
     
@@ -46,10 +45,6 @@ Convert html to markdown
     $ pandoc -f html -t markdown test.html -o test.markdown
     or
     $ tools/h2m test.html
-
-Convert picture to pdf
-
-    $ convert -page A4 pic/cover.png -gravity center -format pdf pdf/cover.pdf
 
 Configure book
 
