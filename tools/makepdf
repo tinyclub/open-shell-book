@@ -17,6 +17,7 @@ def main()
     options = {
         "build"=> "pdf",
         "lang" => "zh",
+        "cover"         => "pic/cover.png",
         "config"        => "config/main.yml",
         "template"      => "latex/template.tex",
         "chapter-files" => "*/*.markdown",
@@ -24,8 +25,8 @@ def main()
         "jeykll"        => false
     }
 
-    $configDir = File.join($root, '/config/')
-    config_file = File.join($configDir, 'basic.yml')
+    configDir = File.join($root, '/config/')
+    config_file = File.join(configDir, 'basic.yml')
     if File.exists? config_file
         config_options = YAML.load_file(config_file)
         options.merge!(config_options)
@@ -56,6 +57,10 @@ def main()
                 raise ArgumentError,"LANG must be in zh or en"
             end
             options["lang"] = lang
+        end
+	# Set the cover image
+        opts.on("-C","--cover","cover") do 
+            options["cover"] = cover
         end
         opts.on("-c","--config CONFIG","config file") do |config|
             unless File.exists? config
@@ -268,7 +273,10 @@ def generate_pdf(options)
             config = $config['default'].merge($config[lang]) rescue $config['default']
 
             puts "#{lang}:"
-            
+           
+	    cover_image = options['cover']
+	    puts "\n\tUsing Cover Image: #{options['cover']}\n\n"
+
             prefacefiles = "#$root/#{lang}/#{options['preface-files']}"
 
             puts "\tParsing preface markdown... #{prefacefiles} "        
