@@ -372,7 +372,7 @@ $ echo "" | awk '{srand(); printf("%f", rand());}'
 ```
 $ expr $RANDOM / 128
 
-$ echo "" | awk '{srand(); printf("%dn", rand()*255);}'
+$ echo "" | awk '{srand(); printf("%d\n", rand()*255);}'
 ```
 
 思考：如果要随机产生某个IP段的IP地址，该如何做呢？看例子：友善地获取一个可用的IP地址。
