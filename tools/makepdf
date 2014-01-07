@@ -245,6 +245,8 @@ def post_pandoc(string, config, lang, chapter=true)
             s /^\\section\{(.*)\}/,'\section*{\1}'
             s /^\\subsection\{(.*)\}/,'\subsection*{\1}'
         end
+            
+	s /\\ctable\[pos \= H/m, '\\ctable[pos = h'
 		
 	end
 end
