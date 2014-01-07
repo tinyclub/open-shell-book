@@ -26,11 +26,11 @@ Though texlive 2011 can be installed separately, the default one texlive 2009 fr
 You need to install related fonts for Chinese, fortunately they exist in ubuntu source also.
     
     $ sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai # from arphic 
-	$ sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei # from WenQuanYi
+    $ sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei     # from WenQuanYi
 
 Install more
 
-    $ sudo gem install debugger debugger-linecache debugger-ruby_core_source linecache19 ruby-debug-base19 ruby-debug-ide ruby-debug-ide19 ruby-debug19 ruby_core_source
+    $ sudo gem install debugger-linecache debugger-ruby_core_source ruby-debug-base19 ruby_core_source
 
 Then it should work perfectly
 
