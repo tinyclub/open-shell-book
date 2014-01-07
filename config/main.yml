@@ -14,7 +14,7 @@ default:
   fig: "Figure "
   tab: "Table "
   indent: "\\qquad"
-  thanks: "这是[Wu Zhangjin/Falcon](wuzhangjin@gmail.com)于2007至2008年编写的一个Blog序列，因为老Blog系统因故无法访问，整个序列的更新一度停顿，作者现已新开个人网站：\\url{http://tinylab.org}，并且已经用Markdown对整个序列做了初步整理，目前基于\\url{http://github.com/larrycai/kaiyuanbook}在TinyLab的项目仓库以自由书籍的方式长期维护:\\url{https://gitorious.org/tinylab/pleac-shell}，并以PDF的方式发布，更多详细内容请访问项目首页：\\url{http://www.tinylab.org/project/pleac-shell/}"
+  thanks: "\\url{http://TinyLab.org}是一个开放的嵌入式系统研发社区，致力于嵌入式Linux产品级系统解决方案的研发与交流。该书是其成员Wu Zhangjin/Falcon基于早年编写的一序列关于Shell编程的技术博客整理而成，现作为自由书籍发布，其项目首页为\\url{http://www.tinylab.org/project/pleac-shell/}。"
 zh:
   title: Shell编程范例序列
   author: TinyLab.org | 泰晓实验室
