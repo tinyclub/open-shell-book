@@ -1,5 +1,6 @@
 default:
   title: Shell编程范例序列
+  author: TinyLab.org | 泰晓实验室
   font: Liberation Serif
   bold: "{* Bold}"
   mono: Liberation Mono
@@ -16,6 +17,7 @@ default:
   thanks: "这是[Wu Zhangjin/Falcon](wuzhangjin@gmail.com)于2007至2008年编写的一个Blog序列，因为老Blog系统因故无法访问，整个序列的更新一度停顿，作者现已新开个人网站：\\url{http://tinylab.org}，并且已经用Markdown对整个序列做了初步整理，目前基于\\url{http://github.com/larrycai/kaiyuanbook}在TinyLab的项目仓库以自由书籍的方式长期维护:\\url{https://gitorious.org/tinylab/pleac-shell}，并以PDF的方式发布，更多详细内容请访问项目首页：\\url{http://www.tinylab.org/project/pleac-shell/}"
 zh:
   title: Shell编程范例序列
+  author: TinyLab.org | 泰晓实验室
   langrule: "\\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em\n\\XeTeXlinebreakpenalty=0"
   font: AR PL SungtiL GB
   bold: WenQuanYi Micro Hei
