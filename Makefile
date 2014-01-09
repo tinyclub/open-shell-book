@@ -29,9 +29,6 @@ $(bookInput): clean
 read:
 	evince $(bookInput)
 
-read-full:
-	evince $(bookOutput)
-
 release: $(bookInput)
 	@echo -e -n "\n\tRelease Version $(bookVersion):"
 	@cp $(bookInput) $(bookOutput) 2>&1 > /dev/null

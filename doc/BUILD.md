@@ -64,10 +64,6 @@ Release the book
 
     $ make release
 
-Read the released book
-
-    $ make read-full
-
 Just remind you, some [extra pandoc markdown format](http://johnmacfarlane.net/pandoc/README.html) is used inside this book:
 
   * code syntax highlight (doesn't work in pdf, while it should work in html/epub which needed later)
