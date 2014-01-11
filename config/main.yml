@@ -2,6 +2,7 @@ default:
   title: Shell编程范例序列
   author: TinyLab.org | 泰晓实验室
   font: Liberation Serif
+  main: Liberation Serif
   bold: "{* Bold}"
   mono: Liberation Mono
   prechap: "Chapter "
@@ -19,9 +20,10 @@ zh:
   title: Shell编程范例序列
   author: TinyLab.org | 泰晓实验室
   langrule: "\\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em\n\\XeTeXlinebreakpenalty=0"
-  font: AR PL SungtiL GB
+  font: WenQuanYi Micro Hei
+  main: WenQuanYi Micro Hei
   bold: WenQuanYi Micro Hei
-  mono: WenQuanYi Zen Hei Mono
+  mono: WenQuanYi Micro Hei
   # AR is 文鼎字体，中文缺省 http://www.arphic.com/cn/home.html
   # http://www.debian.org/international/Chinese/software
   # AR PL UMing: 文鼎PL细上海宋 : 句号有问题
@@ -50,6 +52,7 @@ zh:
 zh-tw:
   langrule: "\\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em\n\\XeTeXlinebreakpenalty=0"
   font: AR PL UMing TW
+  main: AR PL UKai TW
   bold: AR PL UKai TW
   mono: AR PL UKai TW
   prechap: "第"
