@@ -245,14 +245,15 @@ awk的“数组”功能何止于此呢，看看它的for引用吧，注意，�
 
 awk还有更“厉害”的处理能力，它的下标可以不是数字，而可以是字符串，从而变成了“关联”数组，这种“关联”的作用在某些方便将让我们非常方便。
 比如，我们这里就实现一个非凡的应用，把某个文件中的某个系统调用名替换成地址，如果你真正用起它，你会感慨它的“鬼斧神工”的。
-这就是我在一个场合最好才发现的随好的实现方案：有兴趣看看awk手册帖子中我在3楼回复的实例吧。
+这就是我在一个场合最后才发现的实现方案，它用于关联两个文件，有点类似于数据库关联查询了：
 
     $ cat symbol 
     sys_exit
     sys_read
     sys_close
     $ ls /boot/System.map*
-    $ awk '{if(FILENAME ~ "System.map") map[$3]=$1; else {printf("%s\n", map[$1])}}' /boot/System.map-2.6.20-16-generic symbol 
+    $ awk '{if(FILENAME ~ "System.map") map[$3]=$1; else {printf("%s\n", map[$1])}}' \
+        /boot/System.map-2.6.20-16-generic symbol 
     c0129a80
     c0177310
     c0175d80
