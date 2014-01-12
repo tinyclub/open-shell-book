@@ -55,7 +55,7 @@ $ chmod +x /path/to/test.sh
 $ /path/to/test.sh
 ```
 
-第二种方法是直接把脚本作为bash解释器的参数传入：
+第二种方法是直接把脚本作为Bash解释器的参数传入：
 
 ```
 $ bash /path/to/test.sh
