@@ -14,11 +14,11 @@
 
 ## 现状
 
-考虑到整个Linux世界的蓬勃发展，Shell的使用环境越来越多，相关使用群体会不断增加，所以最近计划把该序列重新整理，以自由书籍的方式不断更新，以便惠及更多的读者。
+考虑到整个Linux世界的蓬勃发展，Shell的使用环境越来越多，相关使用群体会不断增加，所以最近已经将该序列重新整理，并以自由书籍的方式发布，以便惠及更多的读者。
 
-目前已经把早期的内容重新整理到[TinyLab.org](http://tinylab.org)，整个序列用[Markdown](http://www.tinylab.org/start-posting-with-markdown/)重写，可以通过[TinyLab.org](http://tinylab.org)各文章右上角的Print/PDF插件直接下载所有章节的PDF版本。
+整个序列已经用[Markdown](http://www.tinylab.org/start-posting-with-markdown/)重新组织，并发布到了[TinyLab.org](http://tinylab.org)，可以通过[TinyLab.org](http://tinylab.org)各文章右上角的Print/PDF插件直接下载所有章节的PDF版本。
 
-初稿的索引篇是：[《Shell编程范例之索引篇》](http://www.tinylab.org/shell-programming-paradigm-series-index-review/)，其内容结构如下：
+整理到[TinyLab.org](http://tinylab.org)的索引篇是：[《Shell编程范例之索引篇》](http://www.tinylab.org/shell-programming-paradigm-series-index-review/)，其内容结构如下：
 
 - [Shell编程范例之开篇](http://www.tinylab.org/shell-programming-paradigm-begins-with/) (更新时间：2007-07-21)
 - [Shell编程范例之数值运算](http://www.tinylab.org/shell-numeric-calculation/) (更新时间：2007-11-9)
@@ -30,14 +30,14 @@
 - [Shell编程范例之网络操作](http://www.tinylab.org/shell-programming-paradigm-of-network-operations/) (更新时间：2008-04-19)
 - [Shell编程范例之总结篇](http://www.tinylab.org/summary-of-shell-programming-paradigm-article/) (更新时间：2008-07-21)<br>
 
-最近，基于一个Markdown的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，重新整理了该书籍，并维护在TinyLab的[项目仓库](https://gitorious.org/tinylab/pleac-shell)中。项目相关信息如下：
+最近，基于一个Markdown的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，已经把该序列整理成了自由书籍，并维护在TinyLab的[项目仓库](https://gitorious.org/tinylab/pleac-shell)中。项目相关信息如下：
 
 - 项目首页：<http://www.tinylab.org/project/pleac-shell/>
 - 代码仓库：[git@gitorious.org:tinylab/pleac-shell.git](https://gitorious.org/tinylab/pleac-shell)
 
 ## 计划
 
-后续除了继续在[TinyLab.org](http://tinylab.org)以Blog形式持续更新外，还打算重新规划、增补整个序列，并以开源项目的方式持续维护，并通过[TinLab.org](http://tinylab.org)平台接受读者的反馈，直到正式发行出版。
+后续除了继续在[TinyLab.org](http://tinylab.org)以Blog形式持续更新外，还打算重新规划、增补整个序列，并以自由书籍的方式持续维护，并通过[TinLab.org](http://tinylab.org)平台接受读者的反馈，直到正式发行出版。
 
 欢迎大家指出本书初稿中的不足，甚至参与到相关章节的写作、校订和完善中来。
 
