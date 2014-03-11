@@ -33,7 +33,7 @@
 最近，基于一个Markdown的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，已经把该序列整理成了自由书籍，并维护在TinyLab的[项目仓库](https://gitorious.org/tinylab/pleac-shell)中。项目相关信息如下：
 
 - 项目首页：<http://www.tinylab.org/project/pleac-shell/>
-- 代码仓库：[git@gitorious.org:tinylab/pleac-shell.git](https://gitorious.org/tinylab/pleac-shell)
+- 代码仓库：[https://gitorious.org/tinylab/pleac-shell.git](https://gitorious.org/tinylab/pleac-shell)
 
 ## 计划
 
