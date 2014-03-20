@@ -278,10 +278,10 @@ def generate_pdf(options)
             puts "#{lang}:"
            
 	    cover_image = options['cover']
-	    puts "\n\tUsing Cover Image: #{options['cover']}\n\n"
+	    puts "\n\tUsing Cover Image: #{options['cover']}\n"
 	    
 	    cover_desc = options['cover_desc']
-	    puts "\n\tUsing Cover Image: #{options['cover']}\n\n"
+	    puts "\tUsing Cover Description: #{options['cover_desc']}\n\n"
 
             prefacefiles = "#$root/#{lang}/#{options['preface-files']}"
 
