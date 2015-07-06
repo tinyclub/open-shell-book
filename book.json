@@ -1,0 +1,12 @@
+{
+    "author": "Wu Zhangjin <wuzhangjin@gmail.com>",
+    "description": "这是开源书籍《Shell 编程范例》的 GitBook 版本",
+    "generator": "site",
+    "links": {
+        "sidebar": {
+            "泰晓科技": "http://www.tinylab.org",
+            "项目首页": "http://www.tinylab.org/project/pleac-shell/"
+        }
+    },
+    "title": "Shell 编程范例"
+}

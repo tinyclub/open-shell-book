@@ -30,10 +30,10 @@
 - [Shell编程范例之网络操作](http://www.tinylab.org/shell-programming-paradigm-of-network-operations/) (更新时间：2008-04-19)
 - [Shell编程范例之总结篇](http://www.tinylab.org/summary-of-shell-programming-paradigm-article/) (更新时间：2008-07-21)<br>
 
-最近，基于一个Markdown的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，已经把该序列整理成了自由书籍，并维护在TinyLab的[项目仓库](https://gitlab.com/tinylab/pleac-shell)中。项目相关信息如下：
+最近，基于一个Markdown的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，已经把该序列整理成了自由书籍，并维护在TinyLab的[项目仓库](https://github.com/tinyclub/open-shell-book)中。项目相关信息如下：
 
 - 项目首页：<http://www.tinylab.org/project/pleac-shell/>
-- 代码仓库：[https://gitlab.com/tinylab/pleac-shell.git](https://gitlab.com/tinylab/pleac-shell)
+- 代码仓库：[https://github.com/tinyclub/open-shell-book.git](https://github.com/tinyclub/open-shell-book)
 
 ## 计划
 
