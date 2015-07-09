@@ -1,5 +1,11 @@
 # 简介
 
+-    [背景](#toc_18682_17841_1)
+-    [现状](#toc_18682_17841_2)
+-    [计划](#toc_18682_17841_3)
+
+
+<span id="toc_18682_17841_1"></span>
 ## 背景
 
 早在2007年11月，为了系统地学习和总结Shell编程，作者专门制定了一个Shell编程范例的总结计划，当时的计划是：
@@ -12,6 +18,7 @@
 
 2008年4月底，整个序列大部分内容和框架基本完成，后来由于实习和工作原因，并没有持续完善。不过相关章节却获得了较好的反响，很多热心网友有大量评论和转载，例如，在百度文库转载的一份[《Shell编程范例之字符串操作》](http://wenku.baidu.com/link?url=WChC-PdR7rqPiwkuo70l2zGo3YVCFrG2cRRwMXsRh4niknUlAWd2eI-AMAiP2GbxhL-BFfV_CL65zUXjEXKYf0zVhF2AHZych7X1_b4pg47)的访问量已接近3000。说明整个序列还是有比较大的阅读群体。
 
+<span id="toc_18682_17841_2"></span>
 ## 现状
 
 考虑到整个Linux世界的蓬勃发展，Shell的使用环境越来越多，相关使用群体会不断增加，所以最近已经将该序列重新整理，并以自由书籍的方式发布，以便惠及更多的读者。
@@ -35,6 +42,7 @@
 - 项目首页：<http://www.tinylab.org/project/pleac-shell/>
 - 代码仓库：[https://github.com/tinyclub/open-shell-book.git](https://github.com/tinyclub/open-shell-book)
 
+<span id="toc_18682_17841_3"></span>
 ## 计划
 
 后续除了继续在[TinyLab.org](http://tinylab.org)以Blog形式持续更新外，还打算重新规划、增补整个序列，并以自由书籍的方式持续维护，并通过[TinLab.org](http://tinylab.org)平台接受读者的反馈，直到正式发行出版。

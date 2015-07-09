@@ -1,3 +1,7 @@
+> 本书-来源：[开源书籍：Shell 编程范例](http://www.tinylab.org/project/pleac-shell/) (by [泰晓科技](http://tinylab.org))<br>
+> 报名/参与：*Star/fork* [open-shell-book github 仓库](https://github.com/tinyclub/open-shell-book); *关注/私信* [@泰晓科技](http://weibo.com/tinylaborg)  <br>
+
+
 # Shell 编程范例
 
 v0.1
