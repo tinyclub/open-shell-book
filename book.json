@@ -5,7 +5,8 @@
     "links": {
         "sidebar": {
             "泰晓科技": "http://www.tinylab.org",
-            "项目首页": "http://www.tinylab.org/project/pleac-shell/"
+            "项目首页": "http://www.tinylab.org/project/pleac-shell/",
+            "C 语言编程透视": "http://tinylab.gitbooks.io/cbook"
         }
     },
     "title": "Shell 编程范例"
