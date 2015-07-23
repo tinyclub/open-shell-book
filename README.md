@@ -5,33 +5,51 @@
 
 # Shell 编程范例
 
-v0.1
+v 0.2
 
 不同于传统 Shell 书籍，本书并未花大篇幅去介绍 Shell 语法，而是以面向“对象” 的方式引入大量的实例介绍 Shell 日常操作，“对象” 涵盖数值、逻辑值、字符串、文件、进程、文件系统等。这样有助于学以致用，并在用的过程中提高兴趣。也可以作为 Shell 编程索引，在需要的时候随时检索。
 
 ## Introduction
 
-- Homepage: <http://www.tinylab.org/project/pleac-shell/>
-- Repository: [https://github.com/tinyclub/open-shell-book.git](https://github.com/tinyclub/open-shell-book)
+- 项目首页：<http://www.tinylab.org/project/pleac-shell/>
+- 代码仓库：[https://github.com/tinyclub/open-shell-book.git](https://github.com/tinyclub/open-shell-book)
 
-Please check doc/BUILD.md for building and doc/README.md for the project details.
+    更多背景和计划请参考：[前言](zh/preface/01-chapter1.markdown)。
 
-## Errata
+### 安装
 
-If you see anything that is technically wrong or otherwise in need of
-correction, please email me at wuzhangjin at gmail dot com to inform me.
+以 Ubuntu 为例：
 
-### License
+    $ sudo aptitude install -y retext git nodejs npm
+    $ sudo ln -fs /usr/bin/nodejs /usr/bin/node
+    $ aptitude install -y calibre fonts-arphic-gbsn00lp
+    $ npm install gitbook-cli -g
 
-The license is under ![](http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png), see [CC BY NC ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/) for more
+### 下载
+
+    $ git clone https://github.com/tinyclub/open-shell-book.git
+    $ cd open-shell-book/
+
+### 编译
+
+    $ gitbook build  // 编译成网页
+    $ gitbook pdf    // 编译成 pdf
+
+### 纠错
+
+欢迎大家指出不足，如有任何疑问，请邮件联系 wuzhangjin at gmail dot com 或者直接修复并提交 Pull Request。
+
+### 版权
+
+本书采用 ![CC BY NC ND 4.0](http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png) 协议发布，详细版权信息请参考 [CC BY NC ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)。
 
 <hr>
 
-### Donate
+### 赞助我们
 
 <span id="donate"><img src="pic/tinylab-sponsor-1.68.jpg" width="160"/></span>
 
-### More...
+### 更多原创开源书籍
 
 * [C 语言编程透视](http://tinylab.gitbooks.io/cbook/)
 * [嵌入式 Linux 知识库(eLinux.org 中文版)](http://tinylab.gitbooks.io/elinux/)
