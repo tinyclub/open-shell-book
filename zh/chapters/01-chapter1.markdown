@@ -13,21 +13,24 @@
 <span id="toc_22391_32127_1"></span>
 ## 前言
 
-到最后一节来写“开篇”，确实有点古怪。不过，在[第一篇（数值操作）](http://www.tinylab.org/Shell-numeric-calculation/)的开头实际上也算是一个小的开篇，那里提到整个序列的前提是需要有一定的 Shell 编程基础，因此，为了能够让没有 Shell 编程基础的读者也可以阅读这个序列，我到最后来重写这个开篇。开篇主要介绍什么是 Shell，Shell 运行环境，Shell 基本语法和调试技巧。
+到最后一节来写“开篇”，确实有点古怪。不过，在[第一篇（数值操作）][200]的开头实际上也算是一个小的开篇，那里提到整个序列的前提是需要有一定的 Shell 编程基础，因此，为了能够让没有 Shell 编程基础的读者也可以阅读这个序列，我到最后来重写这个开篇。开篇主要介绍什么是 Shell，Shell 运行环境，Shell 基本语法和调试技巧。
+
+
+[200]: 01-chapter2.markdown 
 
 <span id="toc_22391_32127_2"></span>
 ## 什么是 Shell
 
-首先让我们从下图看看 `Shell在整个操作系统中所处的位置吧，该图的外圆描述了整个操作系统（比如 `Debian/Ubuntu/Slackware` 等），内圆描述了操作系统的核心（比如 `Linux Kernel`），而 `SHELL` 和 `GUI` 一样作为用户和操作系统之间的接口。
+首先让我们从下图看看 Shell 在整个操作系统中所处的位置吧，该图的外圆描述了整个操作系统（比如 `Debian/Ubuntu/Slackware` 等），内圆描述了操作系统的核心（比如 `Linux Kernel`），而 `Shell` 和 `GUI` 一样作为用户和操作系统之间的接口。
 
 ![Shell和GUI用户接口](pic/UI_Shell_and_GUI.jpg)
 
-`GUI` 提供了一种图形化的用户接口，使用起来非常简便易学；而 `SHELL` 则为用户提供了一种命令行的接口，接收用户的键盘输入，并分析和执行输入字符串中的命令，然后给用户返回执行结果，使用起来可能会复杂一些，但是由于占用的资源少，而且在操作熟练以后可能会提高工作效率，而且具有批处理的功能，因此在某些应用场合还非常流行。
+`GUI` 提供了一种图形化的用户接口，使用起来非常简便易学；而 `Shell` 则为用户提供了一种命令行的接口，接收用户的键盘输入，并分析和执行输入字符串中的命令，然后给用户返回执行结果，使用起来可能会复杂一些，但是由于占用的资源少，而且在操作熟练以后可能会提高工作效率，而且具有批处理的功能，因此在某些应用场合还非常流行。
 
-`SHELL` 作为一种用户接口，它实际上是一个能够解释和分析用户键盘输入，执行输入中的命令，然后返回结果的一个解释程序（Interpreter，例如在 `linux` 下比较常用的 `Bash`），我们可以通过下面的命令查看当前的 `SHELL` ：
+`Shell` 作为一种用户接口，它实际上是一个能够解释和分析用户键盘输入，执行输入中的命令，然后返回结果的一个解释程序（Interpreter，例如在 `linux` 下比较常用的 `Bash`），我们可以通过下面的命令查看当前的 `Shell` ：
 
 ```
-$ echo $SHELL
+$ echo $Shell
 /bin/bash
 $ ls -l /bin/bash
 -rwxr-xr-x 1 root root 702160 2008-05-13 02:33 /bin/bash
@@ -40,7 +43,7 @@ $ ls -l /bin/bash
 <span id="toc_22391_32127_3"></span>
 ## 搭建运行环境
 
-为了方便后面的练习，我们先搭建一个基本运行环境：在一个 Linux 操作系统中，有一个运行有 `Bash` 的命令行在等待我们键入命令，这个命令行可以是图形界面下的 `Terminal` （例如 `Ubuntu` 下非常厉害的 `Terminator`），也可以是字符界面的 `Console` （可以用 `CTRL+ALT+F1~6` 切换），如果你发现当前 `SHELL` 不是 `Bash`，请用下面的方法替换它：
+为了方便后面的练习，我们先搭建一个基本运行环境：在一个 Linux 操作系统中，有一个运行有 `Bash` 的命令行在等待我们键入命令，这个命令行可以是图形界面下的 `Terminal` （例如 `Ubuntu` 下非常厉害的 `Terminator`），也可以是字符界面的 `Console` （可以用 `CTRL+ALT+F1~6` 切换），如果你发现当前 `Shell` 不是 `Bash`，请用下面的方法替换它：
 
 ```
 $ chsh $USER -s /bin/bash
@@ -51,11 +54,11 @@ $ su $USER
 
 ```
 $ bash
-$ echo $SHELL  # 确认一下
+$ echo $Shell  # 确认一下
 /bin/bash
 ```
 
-如果没有安装 Linux 操作系统，也可以考虑使用一些公共社区提供的 [Linux 虚拟实验服务](http://www.tinylab.org/free-online-linux-labs/)，一般都有提供远程 `SHELL`，你可以通过 `Telnet` 或者是 `Ssh` 的客户端登录上去进行练习。
+如果没有安装 Linux 操作系统，也可以考虑使用一些公共社区提供的 [Linux 虚拟实验服务](http://www.tinylab.org/free-online-linux-labs/)，一般都有提供远程 `Shell`，你可以通过 `Telnet` 或者是 `Ssh` 的客户端登录上去进行练习。
 
 有了基本的运行环境，那么如何来运行用户键入的命令或者是用户编写好的脚本文件呢 `?`
 
@@ -137,10 +140,10 @@ Hello, World
 <span id="toc_22391_32127_5"></span>
 ## Shell 程序设计过程
 
-`SHELL` 语言作为解释型语言，它的程序设计过程跟编译型语言有些区别，其基本过程如下：
+Shell 语言作为解释型语言，它的程序设计过程跟编译型语言有些区别，其基本过程如下：
 
 - 设计算法
-- 用 `SHELL` 编写脚本程序实现算法
+- 用 Shell 编写脚本程序实现算法
 - 直接运行脚本程序
 
 可见它没有编译型语言的"麻烦的"编译和链接过程，不过正是因为这样，它出错时调试起来不是很方便，因为语法错误和逻辑错误都在运行时出现。下面我们简单介绍一下调试方法。
@@ -153,12 +156,12 @@ Hello, World
 <span id="toc_22391_32127_7"></span>
 ## 小结
 
-SHELL语言作为一门解释型语言，可以使用大量的现有工具，包括数值计算、符号处理、文件操作、网络操作等，因此，编写过程可能更加高效，但是因为它是解释型的，需要在执行过程中从磁盘上不断调用外部的程序并进行进程之间的切换，在运行效率方面可能有劣势，所以我们应该根据应用场合选择使用SHELL或是用其他的语言来编程。
+Shell 语言作为一门解释型语言，可以使用大量的现有工具，包括数值计算、符号处理、文件操作、网络操作等，因此，编写过程可能更加高效，但是因为它是解释型的，需要在执行过程中从磁盘上不断调用外部的程序并进行进程之间的切换，在运行效率方面可能有劣势，所以我们应该根据应用场合选择使用 Shell 或是用其他的语言来编程。
 
 <span id="toc_22391_32127_8"></span>
 ## 参考资料
 
-- [《Linux命令行上程序执行的一刹那》](http://tinylab.gitbooks.io/cbook/content/zh/chapters/02-chapter3.html)
-- [《Linux Shell编程学习笔记》][100]
-- [《Shell 脚本调试技术》](http://www.ibm.com/developerworks/cn/linux/l-cn-shell-debug/index.html)
+- [Linux命令行上程序执行的一刹那](http://tinylab.gitbooks.io/cbook/content/zh/chapters/02-chapter3.html)
+- [Linux Shell编程学习笔记][100]
+- [Shell 脚本调试技术](http://www.ibm.com/developerworks/cn/linux/l-cn-shell-debug/index.html)
 - [BASH 的调试手段](http://www.tinylab.org/bash-debugging-tools/)
