@@ -43,7 +43,7 @@
 
 这是作者早期的 Shell 编程学习笔记，主要包括 Shell 概述、 Shell 变量、位置参数、特殊符号、别名、各种控制语句、函数等 Shell 编程知识。
 
-要想系统地学 Shell，应该找些较系统的资料，例如：[《Shell 编程范例序列》](http://www.tinylab.org/shell-programming-paradigm-series-index-review/)和[《鸟哥学习Shell Scripts》](http://www.chinaunix.net/jh/24/628472.html)。
+要想系统地学 Shell，应该找些较系统的资料，例如：[《Shell 编程范例》](http://www.tinylab.org/shell-programming-paradigm-series-index-review/)和[《鸟哥学习Shell Scripts》](http://www.chinaunix.net/jh/24/628472.html)。
 
 <span id="toc_19246_27800_3"></span>
 ### 执行 Shell 脚本的方式
