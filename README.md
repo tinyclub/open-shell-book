@@ -1,5 +1,5 @@
 > 本书来源：[开源书籍：Shell 编程范例](http://www.tinylab.org/project/pleac-shell/) (by [泰晓科技](http://tinylab.org))<br>
-> 报名参与：*Star/fork* [GitHub 仓库](https://github.com/tinyclub/open-shell-book) <br>
+> 报名参与：*Star/fork* [GitHub 仓库](https://github.com/tinyclub/open-shell-book) 并发送 *Pull Request* <br>
 > 关注我们：[扫描二维码](#follow) 关注 [@泰晓科技](http://weibo.com/tinylaborg) 微博<br>
 > 赞助我们：[赞助 1.68￥](#donate)，[更多原创开源书籍](#more)期待您的支持 ^o^ <br>
 
