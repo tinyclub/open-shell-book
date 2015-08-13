@@ -74,3 +74,4 @@ v 0.2
 
 * [C 语言编程透视](http://tinylab.gitbooks.io/cbook/)
 * [嵌入式 Linux 知识库(eLinux.org 中文版)](http://tinylab.gitbooks.io/elinux/)
+* [Linux 内核文档(Linux Documentation/ 中文版)](http://tinylab.gitbooks.io/linux-doc/)
