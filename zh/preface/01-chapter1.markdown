@@ -39,7 +39,7 @@
 
 最近，基于一个 Markdown 的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，已经把该系列整理成了自由书籍，并维护在 TinyLab 的[项目仓库](https://github.com/tinyclub/open-shell-book)中。项目相关信息如下：
 
-- 项目首页：<http://www.tinylab.org/pleac-shell/>
+- 项目首页：<http://www.tinylab.org/open-shell-book/>
 - 代码仓库：[https://github.com/tinyclub/open-shell-book.git](https://github.com/tinyclub/open-shell-book)
 
 <span id="toc_18682_17841_3"></span>
