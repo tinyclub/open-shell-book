@@ -23,7 +23,7 @@
 
 考虑到整个 Linux 世界的蓬勃发展，Shell 的使用环境越来越多，相关使用群体会不断增加，所以最近已经将该系列重新整理，并以自由书籍的方式发布，以便惠及更多的读者。
 
-整个系列已经用 [Markdown](http://www.tinylab.org/start-posting-with-markdown/) 重新组织，并发布到了 [泰晓科技|TinyLab.org](http://tinylab.org)，可以通过[TinyLab.org](http://tinylab.org)各文章右上角的 Print/PDF 插件直接下载所有章节的 PDF 版本。
+整个系列已经用 [Markdown](http://www.tinylab.org/start-posting-with-markdown/) 重新组织，并发布到了 [泰晓科技|TinyLab.org](http://tinylab.org)。
 
 整理到[TinyLab.org](http://tinylab.org)的索引篇是：[《Shell编程范例之索引篇》](http://www.tinylab.org/shell-programming-paradigm-series-index-review/)，其内容结构如下：
 
@@ -37,7 +37,7 @@
 - [Shell编程范例之网络操作](http://www.tinylab.org/shell-programming-paradigm-of-network-operations/) (更新时间：2008-04-19)
 - [Shell编程范例之总结篇](http://www.tinylab.org/summary-of-shell-programming-paradigm-article/) (更新时间：2008-07-21)<br>
 
-最近，基于一个 Markdown 的[开源书籍模版](http://github.com/larrycai/kaiyuanbook)，已经把该系列整理成了自由书籍，并维护在 TinyLab 的[项目仓库](https://github.com/tinyclub/open-shell-book)中。项目相关信息如下：
+最近，基于一个 Markdown 的[开源书籍模版](http://tinylab.org/docker-quick-start-docker-gitbook-writing-a-book/)：Gitbook，已经把该系列整理成了自由书籍，并维护在 TinyLab 的[项目仓库](https://github.com/tinyclub/open-shell-book)中。项目相关信息如下：
 
 - 项目首页：<http://www.tinylab.org/open-shell-book/>
 - 代码仓库：[https://github.com/tinyclub/open-shell-book.git](https://github.com/tinyclub/open-shell-book)
