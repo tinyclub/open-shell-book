@@ -26,6 +26,10 @@ v 0.2
     $ sudo ln -fs /usr/bin/nodejs /usr/bin/node
     $ sudo aptitude install -y calibre fonts-arphic-gbsn00lp
     $ sudo npm install gitbook-cli -g
+    $ sudo rm /usr/local/bin/gitbook
+    $ sudo sh -c 'echo "nodejs /usr/local/lib/node_modules/gitbook-cli/bin/gitbook.js \$@" > /usr/local/bin/gitbook'
+    $ sudo chmod +x /usr/local/bin/gitbook
+    $ gitbook install
 
 ### 下载
 
