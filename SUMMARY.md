@@ -8,5 +8,6 @@
 * [文件系统操作](zh/chapters/01-chapter6.markdown)
 * [进程操作](zh/chapters/01-chapter7.markdown)
 * [网络操作](zh/chapters/01-chapter8.markdown)
-* [总结](zh/chapters/01-chapter9.markdown)
+* [用户管理](zh/chapters/01-chapter9.markdown)
+* [总结](zh/chapters/01-chapter10.markdown)
 * [附录](zh/appendix/02-chapter1.markdown)
