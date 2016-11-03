@@ -305,7 +305,7 @@
 
     echo $#
     echo $1
-    if [ $# -eq 1 ] && (echo $1 | grep ^[0-9]*$ >/dev/null);then
+    if [ $# -eq 1 ] && (echo $1 | grep '^[0-9]*$' >/dev/null);then
     	echo "YES"
     fi
 
@@ -317,7 +317,7 @@
 
     echo $#
     echo $1
-    ! ([ $# -eq 1 ] && (echo $1 | grep ^[0-9]*$ >/dev/null)) && exit 1
+    ! ([ $# -eq 1 ] && (echo $1 | grep '^[0-9]*$' >/dev/null)) && exit 1
 
     echo "YES"
 
