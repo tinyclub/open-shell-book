@@ -30,7 +30,7 @@
 `Shell` 作为一种用户接口，它实际上是一个能够解释和分析用户键盘输入，执行输入中的命令，然后返回结果的一个解释程序（Interpreter，例如在 `linux` 下比较常用的 `Bash`），我们可以通过下面的命令查看当前的 `Shell` ：
 
 ```
-$ echo $Shell
+$ echo $SHELL
 /bin/bash
 $ ls -l /bin/bash
 -rwxr-xr-x 1 root root 702160 2008-05-13 02:33 /bin/bash
@@ -54,7 +54,7 @@ $ su $USER
 
 ```
 $ bash
-$ echo $Shell  # 确认一下
+$ echo $SHELL  # 确认一下
 /bin/bash
 ```
 
