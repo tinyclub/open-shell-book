@@ -22,9 +22,9 @@ v 0.3
 
 以 Ubuntu 为例：
 
-    $ sudo aptitude install -y retext git nodejs npm
+    $ sudo apt-get install -y retext git nodejs npm
     $ sudo ln -fs /usr/bin/nodejs /usr/bin/node
-    $ sudo aptitude install -y calibre fonts-arphic-gbsn00lp
+    $ sudo apt-get install -y calibre fonts-arphic-gbsn00lp
     $ sudo npm install gitbook-cli -g
     $ sudo rm /usr/local/bin/gitbook
     $ sudo sh -c 'echo "nodejs /usr/local/lib/node_modules/gitbook-cli/bin/gitbook.js \$@" > /usr/local/bin/gitbook'
