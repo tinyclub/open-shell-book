@@ -31,3 +31,11 @@ TODO：多思考，总会有更简洁和高效的方式。
 ## 其他注意事项
 
 TODO：比如小心 `rm -rf` 的用法，如何查看系统帮助等。
+
+### 正确使用 `source` 和 `.`
+
+一般情况下，使用 `source` 和 `.` 来执行你的环境配置等功能，用 `bash` 执行非环境配置目的的脚本。
+在Shell中使用脚本时，使用 `bash your_script.sh` 而不是 `source your_script.sh` 或
+`. your_script.sh`。当时用 `bash` 的时候，当前的Shell会创建一个新的子进程执行你的脚本；当使用
+`source` 和 `.` 时，当前的Shell会直接解释执行 `your_script.sh` 中的代码。如果 `your_script.sh`
+中包含了类似 `exit 0` 这样的代码，使用`source` 和 `.` 执行会导致当前Shell意外地退出。
