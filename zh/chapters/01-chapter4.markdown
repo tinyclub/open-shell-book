@@ -125,7 +125,7 @@
 <span id="toc_1903_12123_8"></span>
 #### 范例：匹配邮件地址
 
-    $ echo "test2007@lzu.cn" | grep "[0-9a-zA-Z\.]*@[0-9a-zA-Z\.]"
+    $ echo "test2007@lzu.cn" | grep "[0-9a-zA-Z\.]*@[0-9a-zA-Z\.]*"
     test2007@lzu.cn
 
 <span id="toc_1903_12123_9"></span>
