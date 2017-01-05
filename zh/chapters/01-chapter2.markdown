@@ -281,7 +281,7 @@ $ echo -n "$IFS" | od -b
 $ echo "scale=3; 1/13"  | bc
 .076
 
-$ echo "1 13" | awk '{printf("%0.3fn",$1/$2)}'
+$ echo "1 13" | awk '{printf("%0.3f\n",$1/$2)}'
 0.077
 ```
 
@@ -345,7 +345,7 @@ $ echo 0.996293 | awk '{ printf("%s\n", atan2(sqrt(1-$1^2),$1)*180/3.1415926535)
 
 income=$1
 awk '{
-	printf("%d %0.2fn", $1, $3/$2);
+	printf("%d %0.2f\n", $1, $3/$2);
 }' $income | sort -k 2 -n -r
 ```
 
