@@ -20,28 +20,9 @@ v 0.3
 
     更多背景和计划请参考：[前言](zh/preface/01-chapter1.markdown)。
 
-### 安装
-
-以 Ubuntu 为例：
-
-    $ sudo apt-get install -y retext git nodejs npm
-    $ sudo ln -fs /usr/bin/nodejs /usr/bin/node
-    $ sudo apt-get install -y calibre fonts-arphic-gbsn00lp
-    $ sudo npm install gitbook-cli -g
-    $ sudo rm /usr/local/bin/gitbook
-    $ sudo sh -c 'echo "nodejs /usr/local/lib/node_modules/gitbook-cli/bin/gitbook.js \$@" > /usr/local/bin/gitbook'
-    $ sudo chmod +x /usr/local/bin/gitbook
-    $ gitbook install
-
-### 下载
-
-    $ git clone https://github.com/tinyclub/open-shell-book.git
-    $ cd open-shell-book/
-
 ### 编译
 
-    $ gitbook build  // 编译成网页
-    $ gitbook pdf    // 编译成 pdf
+要编译本书，请使用 [Markdown Lab](http://tinylab.org/markdown-lab)。
 
 ### 纠错
 
