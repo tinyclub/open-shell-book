@@ -1,5 +1,6 @@
+* [简介](README.md)
 * [版本修订历史](zh/preface/01-chapter0.markdown)
-* [简介](zh/preface/01-chapter1.markdown)
+* [前言](zh/preface/01-chapter1.markdown)
 * [准备工作](zh/chapters/01-chapter1.markdown)
 * [数值运算](zh/chapters/01-chapter2.markdown)
 * [布尔运算](zh/chapters/01-chapter3.markdown)
