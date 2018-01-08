@@ -391,7 +391,7 @@ Linux 下提供了一组命令用于管理用户和组，比如用于创建用�
     $ cp regular_file regular_file_copy
     $ cp -r diretory_file directory_file_copy
 
-创建硬链接（`link` 和 `copy` 不同之处是后者是同步更新，前者则不然，复制之后两者不再相关）
+创建硬链接（`link` 和 `copy` 不同之处是：`link` 为同步更新，`copy` 则不然，复制之后两者不再相关）
 
     $ ln regular_file regular_file_hard_link
 
