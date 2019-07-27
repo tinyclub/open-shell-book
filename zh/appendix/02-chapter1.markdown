@@ -1,3 +1,8 @@
+**关注作者公众号**：
+<br/>
+<img src='../../pic/tinylab-wechat.jpg' width='110px'/>
+<br/>
+
 # 附录
 
 -    [Shell 编程学习笔记](#toc_19246_27800_1)
