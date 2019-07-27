@@ -1,9 +1,7 @@
-> 联系作者：笔者为一位[重度开源践行者](http://tinylab.org/hello-tinylab/#section-2)，可微信联系：lzufalcon<br>
-> 实验云台：[在线学 Linux，Linux 0.11，汇编，Shell，C ...](http://tinylab.cloud:6080)<br>
-> 本书来源：[开源书籍：Shell 编程范例](http://www.tinylab.org/open-shell-book/) (by [泰晓科技](http://tinylab.org))<br>
-> 报名参与：*Star/fork* [GitHub 仓库](https://github.com/tinyclub/open-shell-book) 并发送 *Pull Request* <br>
-> 关注我们：[扫描二维码](#follow) 关注 [@泰晓科技](http://weibo.com/tinylaborg) 微博和微信公众号<br>
-> 赞助我们：[赞助 8.99￥](#donate)，[更多原创开源书籍](#more)期待您的支持 ^o^ <br>
+**关注作者公众号**：
+<br/>
+<img src='pic/tinylab-wechat.jpg' width='110px'/>
+<br/>
 
 # Shell 编程范例
 
@@ -16,7 +14,6 @@ v 0.3
 - 项目首页：<http://www.tinylab.org/open-shell-book>
 - 代码仓库：<https://github.com/tinyclub/open-shell-book>
 - 在线阅读：<http://tinylab.gitbooks.io/shellbook>
-- 实验云台：[在线学 Linux，Linux 0.11，汇编，Shell，C ...](http://tinylab.cloud:6080)
 
     更多背景和计划请参考：[前言](zh/preface/01-chapter1.markdown)。
 
@@ -32,31 +29,14 @@ v 0.3
 
 本书采用 ![CC BY NC ND 4.0](http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png) 协议发布，详细版权信息请参考 [CC BY NC ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)。
 
-<hr>
+### 联系作者
 
-### 关注我们
+<img src="pic/tinylab-author.jpg" width="110x"/>
 
--   [新浪微博](http://weibo.com/tinylaborg)
+### 赞助作者
 
-   [<img src="pic/tinylab-sina.jpg" width="168px"/>](http://weibo.com/tinylaborg)
+<img src="pic/tinylab-sponsor.jpg" width="110px"/>
 
--   微信公众号
-
-   <img src="pic/tinylab-weixin.jpg" width="168px"/>
-
-
-<span id="donate"></span>
-### 赞助我们
-
-* 微信扫码赞助原创
-
-    <img src="pic/tinylab-sponsor.jpg" width="168px"/>
-
-* 访问 [泰晓开源小店](http://weidian.com/?userid=335178200) 支持心仪项目
-
-    [<img src="pic/tinylab-shop.jpg" width="168px"/>](http://weidian.com/?userid=335178200)
-
-<span id="more"></span>
 ### 更多原创开源书籍
 
 * [C 语言编程透视](http://tinylab.gitbooks.io/cbook/)
