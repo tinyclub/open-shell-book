@@ -54,4 +54,4 @@
 
 欢迎大家指出本书初稿中的不足，甚至参与到相关章节的写作、校订和完善中来。
 
-如果有时间和兴趣，欢迎参与。可以通过 [泰晓科技](http://www.tinylab.org/about/) 联系我们，或者直接关注微博[@泰晓科技](http://weibo.com/tinylaborg)并私信我们。
+如果有时间和兴趣，欢迎参与。可以通过 [泰晓科技](http://www.tinylab.org/about/) 联系我们，或者直接联系微信号 tinylab。
